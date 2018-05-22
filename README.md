@@ -36,5 +36,7 @@ call the `development_install.sh` to install dev enviroment, that are:
 
 ## Use
 ```bash
+git@github.com:frankjuniorr/ubuntu_install.git
+cd ubuntu_install/code
 ./ubuntu_install.sh
 ```
