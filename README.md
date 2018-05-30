@@ -1,3 +1,5 @@
+<p align="center"><img src="logo/1024px.png" alt="ubuntu_install" height="200px"></p>
+
 ubuntu install
 ===========
 [![environment](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)
