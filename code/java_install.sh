@@ -198,7 +198,7 @@ java_set_default(){
 update_path(){
 	echo "" >> $HOME/.bashrc
 	echo "#------- instalação do java -------" >> $HOME/.bashrc
-	echo "JAVA_HOME=$java_location/java" >> $HOME/.bashrc
+	echo "JAVA_HOME=$java_location/$java" >> $HOME/.bashrc
 	echo 'PATH=$PATH:$JAVA_HOME/bin' >> $HOME/.bashrc
 	echo 'export JAVA_HOME' >> $HOME/.bashrc
 	echo 'export PATH' >> $HOME/.bashrc

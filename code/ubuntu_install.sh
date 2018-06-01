@@ -113,6 +113,7 @@ init_updates(){
   _print_info "Fazendo as atualizações iniciais..."
   sudo apt -y upgrade
   sudo apt -y dist-upgrade
+  sudo apt -y full-upgrade
 
   # instalações dos pacotes de comunicação primeiro.
   sudo apt install -y curl wget
@@ -324,6 +325,9 @@ upgrade_atom(){
     _print_success "atom-beautify já está instalado"
   fi
 
+  # TODO: instalando o hightlight do Docker
+  apm install language-docker
+
   # Python code that use to formatting Shell Script.
   # this is necessary to [atom-beautify] works
   # pip install beautysh
@@ -399,7 +403,7 @@ install_packages(){
   browser-plugin-vlc \
   lame \
   sound-juicer \
-  ImageMagick \
+  imagemagick \
   ubuntu-restricted-extras
 
   install_telegram

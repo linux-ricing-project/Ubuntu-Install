@@ -131,7 +131,7 @@ readonly ANDROID_STUDIO_FOLDER="$HOME/android_ambiente"
       _print_info "instalando dependencias..."
       sudo apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 
-      link_download=$(curl --silent https://developer.android.com/studio/#downloads |\
+      local link_download=$(curl --silent https://developer.android.com/studio/#downloads |\
       grep "https://dl.google.com/dl/android/studio/ide-zips" |\
       grep -m1 "linux" |\
       cut -d "=" -f2 |\
@@ -158,6 +158,13 @@ readonly ANDROID_STUDIO_FOLDER="$HOME/android_ambiente"
       unzip -q "$android_studio_zip"
       # deletando o zip
       rm "$android_studio_zip"
+
+      # TODO: testar isso aqui depois
+      # export ANDROID_HOME=/home/frankjunior/android_ambiente/android-sdk-linux
+      #
+      # export PATH=$PATH:$ANDROID_HOME/tools
+      # export PATH=$PATH:$ANDROID_HOME/platform-tools
+      # export PATH=$PATH:$ANDROID_HOME/build-tools/21.1.2
 
       _print_info "Android Studio instalado em $ANDROID_STUDIO_FOLDER"
     else
