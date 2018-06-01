@@ -1,3 +1,5 @@
+<p align="center"><img src="logo/1024px.png" alt="ubuntu_install" height="200px"></p>
+
 ubuntu install
 ===========
 [![environment](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)
@@ -36,7 +38,7 @@ call the `development_install.sh` to install dev enviroment, that are:
 
 ## Use
 ```bash
-git@github.com:frankjuniorr/ubuntu_install.git
+git clone git@github.com:frankjuniorr/ubuntu_install.git
 cd ubuntu_install/code
 ./ubuntu_install.sh
 ```
