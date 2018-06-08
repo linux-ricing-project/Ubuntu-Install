@@ -377,6 +377,7 @@ install_packages(){
   # [git]
   # [meld] - usado para os diffs do git
   # [vim]
+  # [jq] - leitor de JSON
   # [gdebi-core] - 'gdebi' is a simple way to install deb files, installaling dependencies too
   # [transmission] - torrent client
   # [libreOffice] - packages about LibreOffice
@@ -393,6 +394,7 @@ install_packages(){
   git \
   meld \
   vim \
+  jq \
   gdebi-core \
   transmission \
   libreoffice-gtk2 libreoffice-gnome \
