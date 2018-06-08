@@ -1,4 +1,9 @@
-<p align="center"><img src="logo/1024px.png" alt="ubuntu_install" height="200px"></p>
+<p align="center">
+  <img src="logo/1024px.png" alt="ubuntu_install" height="200px">
+  </br>
+  <em> Logo designed by <a href="https://github.com/familqasimov">Famil Qasimov</a> </em>
+</p>
+
 
 ubuntu install
 ===========
