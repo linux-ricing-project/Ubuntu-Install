@@ -166,6 +166,13 @@ readonly ANDROID_STUDIO_FOLDER="$HOME/android_ambiente"
       # export PATH=$PATH:$ANDROID_HOME/platform-tools
       # export PATH=$PATH:$ANDROID_HOME/build-tools/21.1.2
 
+      # install the Android adb tools package.
+      sudo apt install android-tools-adb
+
+      # Use id to see what groups you are in. Use sudo usermod -aG plugdev $LOGNAME to add yourself to the plugdev group.
+      # more information in: https://developer.android.com/studio/run/device
+      sudo usermod -aG plugdev $LOGNAME
+
       _print_info "Android Studio instalado em $ANDROID_STUDIO_FOLDER"
     else
       _print_success "O Android Studio já está instalado em ${ANDROID_STUDIO_FOLDER}/android-studio"
