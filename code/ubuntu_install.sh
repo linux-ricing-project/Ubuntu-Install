@@ -297,7 +297,7 @@ install_telegram(){
 _install_atom_package(){
   local package_name="$1"
 
-  if [ ! -d "~/.atom/packages/$package_name" ];then
+  if [ ! -d "$HOME/.atom/packages/$package_name" ];then
     apm install "$package_name"
   else
     _print_success "$package_name já está instalado"
@@ -310,26 +310,18 @@ _install_atom_package(){
 upgrade_atom(){
   _print_info "Upgrade Atom..."
 
-  # Atom package to set specific file icons in tree
-  _install_atom_package "file-icons"
+  packages=(
+  "file-icons"
+  "atom-material-ui"
+  "atom-material-syntax-dark"
+  "atom-beautify"
+  "language-docker"
+  "language-conky"
+  "minimap")
 
-  # Atom package to Material Design Theme
-  _install_atom_package "atom-material-ui"
-
-  # Atom package to Material Design syntax dark
-  _install_atom_package "atom-material-syntax-dark"
-
-  # Atom package to auto formatting code [with ctrl+alt+b]
-  _install_atom_package "atom-beautify"
-
-  # Atom package to hightlight Docker
-  _install_atom_package "language-docker"
-
-  # Atom package to hightlight conkyrc
-  _install_atom_package "language-conky"
-
-  # Atom package to install minimap
-  _install_atom_package "minimap"
+  for package in "${packages[@]}";s do
+    _install_atom_package "$package"
+  done
 
   # Python code that use to formatting Shell Script.
   # this is necessary to [atom-beautify] works
