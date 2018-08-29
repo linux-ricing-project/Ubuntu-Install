@@ -317,6 +317,7 @@ upgrade_atom(){
   "atom-beautify"
   "language-docker"
   "language-conky"
+  "pigments"
   "minimap")
 
   for package in "${packages[@]}";s do
