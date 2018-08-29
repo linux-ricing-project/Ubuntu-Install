@@ -291,42 +291,45 @@ install_telegram(){
 }
 
 # ============================================
+# Função genérica que instala pacotes do Atom.
+# $1 - nome do pacote
+# ============================================
+_install_atom_package(){
+  local package_name="$1"
+
+  if [ ! -d "~/.atom/packages/$package_name" ];then
+    apm install "$package_name"
+  else
+    _print_success "$package_name já está instalado"
+  fi
+}
+
+# ============================================
 # Instala plugins and add-ons pro Atom.
 # ============================================
 upgrade_atom(){
   _print_info "Upgrade Atom..."
-  # Install some Atom Packages
 
   # Atom package to set specific file icons in tree
-  if [ ! -d ~/.atom/packages/file-icons ];then
-    apm install file-icons
-  else
-    _print_success "file-icons já está instalado"
-  fi
+  _install_atom_package "file-icons"
 
   # Atom package to Material Design Theme
-  if [ ! -d ~/.atom/packages/atom-material-ui ];then
-    apm install atom-material-ui
-  else
-    _print_success "atom-material-ui já está instalado"
-  fi
+  _install_atom_package "atom-material-ui"
 
   # Atom package to Material Design syntax dark
-  if [ ! -d ~/.atom/packages/atom-material-syntax-dark ];then
-    apm install atom-material-syntax-dark
-  else
-    _print_success "atom-material-syntax-dark já está instalado"
-  fi
+  _install_atom_package "atom-material-syntax-dark"
 
-# Atom package to auto formatting code [with ctrl+alt+b]
-  if [ ! -d ~/.atom/packages/atom-beautify ];then
-    apm install atom-beautify
-  else
-    _print_success "atom-beautify já está instalado"
-  fi
+  # Atom package to auto formatting code [with ctrl+alt+b]
+  _install_atom_package "atom-beautify"
 
-  # TODO: instalando o hightlight do Docker
-  apm install language-docker
+  # Atom package to hightlight Docker
+  _install_atom_package "language-docker"
+
+  # Atom package to hightlight conkyrc
+  _install_atom_package "language-conky"
+
+  # Atom package to install minimap
+  _install_atom_package "minimap"
 
   # Python code that use to formatting Shell Script.
   # this is necessary to [atom-beautify] works
