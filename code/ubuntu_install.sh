@@ -385,6 +385,7 @@ install_packages(){
   # [sound-juicer] - rip cdrom
   # [ImageMagick] - pacote para manipualções de imagens
   # [ubuntu-restricted-extras] - pacotes extras do Ubuntu: mp3 codec, font tts da Microsoft....
+  # [screenfetch] - Imprime system logo e sysinfo
 
   sudo apt -y install \
   git \
@@ -402,7 +403,8 @@ install_packages(){
   lame \
   sound-juicer \
   imagemagick \
-  ubuntu-restricted-extras
+  ubuntu-restricted-extras \
+  screenfetch
 
   install_telegram
   install_google_chrome
