@@ -1,0 +1,27 @@
+# ============================================
+# File that install and configure Spotify
+# ============================================
+
+---
+  # Add the Spotify repository signing keys to be able to verify downloaded packages
+- name: SPOTIFY - Add signing keys
+  become: true
+  become_method: sudo
+  apt_key: 
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+    state: present
+
+- name: SPOTIFY - Add repositories keys
+  become: true
+  become_method: sudo
+  apt_repository:
+    repo: deb http://repository.spotify.com stable non-free
+    state: present
+    filename: spotify
+
+- name: SPOTIFY - install spotify
+  become: yes
+  apt:
+    name: spotify-client
+    state: present

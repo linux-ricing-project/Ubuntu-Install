@@ -1,0 +1,50 @@
+---
+
+- name: TELEGRAM - create directory
+  file:
+   path: "{{ temp_folder }}"
+   state: directory
+
+- name: "TELEGRAM - Download"
+  get_url:
+   url: "{{ item }}"
+   dest: "{{ temp_folder }}"
+  loop:
+    - https://telegram.org/dl/desktop/linux
+    - https://telegram.org/img/t_logo.png
+
+- name: TELEGRAM - Find files
+  find:
+    paths: "{{ temp_folder }}"
+    patterns: "*.xz,*.png"
+  register: result
+
+- name: TELEGRAM - Extract file
+  shell: tar -xvf {{ result.files[0].path }} -C "{{ temp_folder }}"
+
+- name: Converte logo image size
+  shell: convert -resize 128x128 {{ result.files[1].path }} {{ temp_folder }}/telegram_logo.png
+
+- name: TELEGRAM - remove temporary files
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ result.files[0].path }}"
+    - "{{ result.files[1].path }}"
+
+- name: TELEGRAM - moving logo file
+  shell: mv {{ temp_folder }}/telegram_logo.png {{ temp_folder }}/Telegram/telegram_logo.png
+
+- name: moving Telegram folder to $HOME
+  shell: mv {{ temp_folder }}/Telegram $HOME
+
+- name: TELEGRAM - remove temporary folder
+  file:
+    path: "{{ temp_folder }}"
+    state: absent
+
+- name: TELEGRAM - generate desktop file
+  template:
+    src: "telegram.desktop.j2"
+    dest: "$HOME/.local/share/applications/telegram.desktop"

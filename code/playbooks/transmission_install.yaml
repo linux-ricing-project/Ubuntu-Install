@@ -1,0 +1,19 @@
+---
+# ============================================
+# adicionando repositórios do Transmission
+# ============================================
+- name: TRANSMISSION - Add repositories
+  become: true
+  become_method: sudo
+  apt_repository:
+    repo: "ppa:transmissionbt/ppa"
+    filename: "transmission"
+
+# ============================================
+# Instalando o Transmission
+# ============================================
+- name: TRANSMISSION - install libre office
+  become: yes
+  apt:
+    name: "transmission"
+    state: present

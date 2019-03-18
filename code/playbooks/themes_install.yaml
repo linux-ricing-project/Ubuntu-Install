@@ -1,0 +1,32 @@
+# ============================================
+# File that install Themes
+# ============================================
+
+---
+
+# ============================================
+# adicionando repositórios dos Themes
+# ============================================
+- name: THEMES - Add repositories
+  become: true
+  become_method: sudo
+  apt_repository:
+    repo: "{{ item.key }}"
+    filename: "{{ item.value }}"
+  loop:
+    - {key: 'ppa:tista/adapta',value: "adapta_theme"}
+    - {key: 'ppa:papirus/papirus',value: "adapta_icon_theme"}
+
+# ============================================
+# Instalando os Themes
+# ============================================
+- name: THEMES - install themes
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - adapta-gtk-theme
+      - papirus-icon-theme
+    

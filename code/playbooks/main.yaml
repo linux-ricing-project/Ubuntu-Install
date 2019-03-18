@@ -1,0 +1,115 @@
+---
+- name: playbook Ubuntu Install
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  pre-tasks:
+
+    - name: UTILS - get username
+      shell: whoami
+      register: username
+
+  tasks:
+
+    # ============================================
+    # Instalando os Themes
+    # ============================================
+    - import_tasks: themes_install.yaml
+
+    # ============================================
+    # Instalando o Spotify
+    # ============================================
+    - import_tasks: spotify_install.yaml
+
+    # ============================================
+    # instalando o Atom
+    # ============================================
+    - import_tasks: atom_install.yaml
+
+    # ============================================
+    # Instalando o Libre Office
+    # ============================================
+    - import_tasks: libreoffice_install.yaml
+
+    # ============================================
+    # Instalando o Transmission
+    # ============================================
+    - import_tasks: transmission_install.yaml
+
+
+    # ============================================
+    # instala ferramentas e programas utils
+    # ============================================
+    - name: Install a list of packages
+      become: true
+      become_method: sudo
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - git
+        - meld
+        - jq
+        - gdebi-core
+        - gnome-tweak-tool
+        - python-pip
+        - browser-plugin-vlc
+        - lame
+        - sound-juicer
+        - imagemagick
+        - ubuntu-restricted-extras
+        - neofetch
+        - albert
+
+    # ============================================
+    # Instalando o Telegram Desktop
+    # ============================================
+    - include_tasks: telegram/telegram_install.yaml
+      vars:
+        temp_folder: $HOME/ubuntu_install_temp
+        user: "{{ username.stdout }}"
+
+    # ===========================================
+    # Instalando o Google Chrome
+    # ===========================================
+    - include_tasks: google_chrome_install.yaml
+
+    # ===========================================
+    # Instalando o Calibre
+    # ===========================================
+    - name: CALIBRE - installing
+      become: true
+      become_method: sudo
+      shell: wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+
+    # ===========================================
+    # Instalando o Dropbox
+    # ===========================================
+    - include_tasks: dropbox/dropbox_install.yaml
+      vars:
+        user: "{{ username.stdout }}"
+
+    # ===========================================
+    # Clean Dependencies
+    # ===========================================
+
+    # pra consertar possíveis dependencias e pacotes quebrados
+    - name: CLEAN - Fix broken packages
+      become: true
+      become_method: sudo
+      shell: apt -f -y install
+
+    # deletar os pacotes .deb em '/var/cache/apt/archives/'
+    - name: CLEAN - Remove useless packages from the cache
+      become: true
+      become_method: sudo
+      apt:
+        autoclean: yes
+
+    # remover pacotes não mais utilizados
+    - name: CLEAN - Remove dependencies that are no longer required
+      become: true
+      become_method: sudo
+      apt:
+        autoremove: yes
