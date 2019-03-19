@@ -61,6 +61,11 @@
         - ubuntu-restricted-extras
         - neofetch
 
+    # ===========================================
+    # Instalando o Terminator
+    # ===========================================
+    - include_tasks: terminator_install.yaml
+
     # ============================================
     # Instalando o Albert
     # ============================================

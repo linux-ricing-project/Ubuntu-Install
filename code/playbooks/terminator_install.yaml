@@ -1,0 +1,19 @@
+---
+# ============================================
+# adicionando repositórios do Terminator
+# ============================================
+- name: TERMINATOR - Add repositories
+  become: true
+  become_method: sudo
+  apt_repository:
+    repo: "ppa:gnome-terminator"
+    filename: "terminator"
+
+# ============================================
+# Instalando o Terminator
+# ============================================
+- name: TERMINATOR - installing
+  become: yes
+  apt:
+    name: "terminator"
+    state: present
