@@ -10,5 +10,5 @@
 - name: DROPBOX - generate desktop file
   template:
     src: "dropbox.desktop.j2"
-    dest: "$HOME/.config/autostart"
+    dest: "$HOME/.config/autostart/dropbox.desktop"
 
