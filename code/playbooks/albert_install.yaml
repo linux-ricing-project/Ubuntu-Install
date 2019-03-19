@@ -22,5 +22,5 @@
 - name: ALBERT - add Albert on boot
   file:
     src: "/usr/share/applications/albert.desktop"
-    dest: "~/.config/autostart/"
+    dest: "~/.config/autostart/albert.desktop"
     state: link
