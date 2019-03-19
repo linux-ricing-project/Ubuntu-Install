@@ -4,7 +4,7 @@
   connection: local
   gather_facts: false
 
-  pre-tasks:
+  pre_tasks:
 
     - name: UTILS - get username
       shell: whoami
@@ -60,7 +60,11 @@
         - imagemagick
         - ubuntu-restricted-extras
         - neofetch
-        - albert
+
+    # ============================================
+    # Instalando o Albert
+    # ============================================
+    - include_tasks: albert_install.yaml
 
     # ============================================
     # Instalando o Telegram Desktop

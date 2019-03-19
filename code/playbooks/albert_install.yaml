@@ -1,0 +1,14 @@
+---
+- name: ALBERT - Add repositories keys
+  become: true
+  become_method: sudo
+  apt_repository:
+    repo: deb http://download.opensuse.org/repositories/home:/manuelschneid3r/Debian_Testing/ /
+    state: present
+    filename: albert
+
+- name: ALBERT - install albert
+  become: yes
+  apt:
+    name: albert
+    state: present
