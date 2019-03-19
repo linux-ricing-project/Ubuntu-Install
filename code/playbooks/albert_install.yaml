@@ -16,5 +16,5 @@
 - name: ALBERT - install
   become: yes
   apt:
-    name: atom
-    state: albert
+    name: albert
+    state: present
