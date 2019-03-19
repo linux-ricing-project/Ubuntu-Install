@@ -29,9 +29,9 @@ Install all packages. Basically the packages are:
 - Google Chrome
 - Terminator
 
-### 5. Clean dependencies
+### 3. Clean dependencies
 Clean packages with `sudo apt -f -y install` to fix broken packages and `sudo apt-get autoremove && sudo apt-get clean` to clean.
-### 6. Install development environment
+### 4. Install development environment
 call the `development_install.sh` to install dev enviroment, that are:
 - Postman
 - nodeJs
