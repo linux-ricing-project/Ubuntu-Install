@@ -21,6 +21,8 @@
 
 - name: TELEGRAM - Extract file
   shell: tar -xvf {{ result_xz.files[0].path }} -C "{{ temp_folder }}"
+  args:
+    warn: false
 
 - name: TELEGRAM - Find PNG file
   find:
