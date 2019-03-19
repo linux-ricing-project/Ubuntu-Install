@@ -36,8 +36,8 @@
     path: "{{ item }}"
     state: absent
   with_items:
-    - "{{ result.files[0].path }}"
-    - "{{ result.files[1].path }}"
+    - "{{ result_xz.files[0].path }}"
+    - "{{ result_png.files[0].path }}"
 
 - name: TELEGRAM - moving logo file
   shell: mv {{ temp_folder }}/telegram_logo.png {{ temp_folder }}/Telegram/telegram_logo.png
