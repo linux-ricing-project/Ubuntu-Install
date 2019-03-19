@@ -18,3 +18,9 @@
   apt:
     name: albert
     state: present
+
+- name: ALBERT - add Albert on boot
+  file:
+    src: "/usr/share/applications/albert.desktop"
+    dest: "~/.config/autostart/"
+    state: link

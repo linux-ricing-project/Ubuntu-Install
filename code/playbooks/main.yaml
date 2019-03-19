@@ -60,6 +60,14 @@
         - imagemagick
         - ubuntu-restricted-extras
         - neofetch
+        - terminator
+
+    # ===========================================
+    # Instalando o Dropbox
+    # ===========================================
+    - include_tasks: dropbox/dropbox_install.yaml
+      vars:
+        user: "{{ username.stdout }}"
 
     # ===========================================
     # Instalando o Terminator
@@ -93,13 +101,6 @@
       shell: wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
       args:
         warn: false
-
-    # ===========================================
-    # Instalando o Dropbox
-    # ===========================================
-    - include_tasks: dropbox/dropbox_install.yaml
-      vars:
-        user: "{{ username.stdout }}"
 
     # ===========================================
     # Clean Dependencies
