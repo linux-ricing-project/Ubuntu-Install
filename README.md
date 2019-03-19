@@ -14,13 +14,9 @@ Install my firsts packages and make initial configs in a Ubuntu formatted. Its r
 
 The installation is divided in 6 parts
 
-### 1. Upgrade Inicial
+### 1. Initial Upgrade
 Make the initial config with `sudo apt upgrade && sudo apt dist-upgrade`
-### 2. Add repositories
-Add all repositories necessaries to install packages
-### 3. Update packages
-Make the `sudo apt update` to update repositories added
-### 4. Install packages
+### 2. Install packages
 Install all packages. Basically the packages are:
 - Spotify
 - Atom
@@ -31,6 +27,8 @@ Install all packages. Basically the packages are:
 - LibreOffice
 - Transmission
 - Google Chrome
+- Terminator
+
 ### 5. Clean dependencies
 Clean packages with `sudo apt -f -y install` to fix broken packages and `sudo apt-get autoremove && sudo apt-get clean` to clean.
 ### 6. Install development environment
@@ -41,9 +39,7 @@ call the `development_install.sh` to install dev enviroment, that are:
 - call the `java_install.sh` to install Oracle JDK 8
 - Android Studio
 
-## Use
+## Install without git in a Ubuntu formatted
 ```bash
-git clone git@github.com:frankjuniorr/ubuntu_install.git
-cd ubuntu_install/code
-./ubuntu_install.sh
+wget -O - https://raw.githubusercontent.com/frankjuniorr/ubuntu_install/master/code/trigger.sh | bash
 ```
