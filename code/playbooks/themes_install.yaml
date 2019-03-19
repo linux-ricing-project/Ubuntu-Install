@@ -20,7 +20,7 @@
 # ============================================
 # Instalando os Themes
 # ============================================
-- name: THEMES - install themes
+- name: THEMES - installing
   become: yes
   apt:
     name: "{{ packages }}"

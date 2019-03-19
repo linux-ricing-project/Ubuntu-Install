@@ -13,7 +13,7 @@
     state: present
     filename: albert
 
-- name: ALBERT - install
+- name: ALBERT - installing
   become: yes
   apt:
     name: albert

@@ -14,14 +14,14 @@
     url: 'https://packagecloud.io/AtomEditor/atom/gpgkey'
     state: present
 
-- name: ATOM - install atom repo
+- name: ATOM - add atom repo
   become: yes
   apt_repository:
     repo: deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
     filename: atom
     state: present
 
-- name: ATOM - install atom
+- name: ATOM - installing
   become: yes
   apt:
     name: atom

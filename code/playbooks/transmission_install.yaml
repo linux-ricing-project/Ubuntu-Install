@@ -12,7 +12,7 @@
 # ============================================
 # Instalando o Transmission
 # ============================================
-- name: TRANSMISSION - install
+- name: TRANSMISSION - installing
   become: yes
   apt:
     name: "transmission"

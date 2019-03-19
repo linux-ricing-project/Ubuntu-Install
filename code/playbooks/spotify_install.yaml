@@ -20,7 +20,7 @@
     state: present
     filename: spotify
 
-- name: SPOTIFY - install spotify
+- name: SPOTIFY - installing
   become: yes
   apt:
     name: spotify-client

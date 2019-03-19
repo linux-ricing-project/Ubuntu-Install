@@ -12,7 +12,7 @@
 # ============================================
 # Instalando o Libre Office
 # ============================================
-- name: LIBREOFFICE - install libre office
+- name: LIBREOFFICE - installing
   become: yes
   apt:
     name: "{{ packages }}"
