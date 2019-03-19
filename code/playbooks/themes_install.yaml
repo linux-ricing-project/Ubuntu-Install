@@ -29,4 +29,7 @@
     packages:
       - adapta-gtk-theme
       - papirus-icon-theme
+
+- name: THEME - set to Adapta
+  shell: gsettings set org.gnome.desktop.interface gtk-theme "Adapta-Nokto"
     

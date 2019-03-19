@@ -13,11 +13,6 @@
   tasks:
 
     # ============================================
-    # Instalando os Themes
-    # ============================================
-    - import_tasks: themes_install.yaml
-
-    # ============================================
     # Instalando o Spotify
     # ============================================
     - import_tasks: spotify_install.yaml
@@ -96,6 +91,11 @@
       shell: wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
       args:
         warn: false
+
+    # ============================================
+    # Instalando os Themes
+    # ============================================
+    - import_tasks: themes_install.yaml
 
     # ===========================================
     # Clean Dependencies
