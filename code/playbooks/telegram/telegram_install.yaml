@@ -13,17 +13,23 @@
     - https://telegram.org/dl/desktop/linux
     - https://telegram.org/img/t_logo.png
 
-- name: TELEGRAM - Find files
+- name: TELEGRAM - Find XZ file
   find:
     paths: "{{ temp_folder }}"
-    patterns: "*.xz,*.png"
-  register: result
+    patterns: "*.xz"
+  register: result_xz
 
 - name: TELEGRAM - Extract file
-  shell: tar -xvf {{ result.files[0].path }} -C "{{ temp_folder }}"
+  shell: tar -xvf {{ result_xz.files[0].path }} -C "{{ temp_folder }}"
+
+- name: TELEGRAM - Find PNG file
+  find:
+    paths: "{{ temp_folder }}"
+    patterns: "*.png"
+  register: result_png
 
 - name: Converte logo image size
-  shell: convert -resize 128x128 {{ result.files[1].path }} {{ temp_folder }}/telegram_logo.png
+  shell: convert -resize 128x128 {{ result_png.files[0].path }} {{ temp_folder }}/telegram_logo.png
 
 - name: TELEGRAM - remove temporary files
   file:
