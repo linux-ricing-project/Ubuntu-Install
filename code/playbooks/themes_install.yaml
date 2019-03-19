@@ -32,4 +32,7 @@
 
 - name: THEME - set to Adapta
   shell: gsettings set org.gnome.desktop.interface gtk-theme "Adapta-Nokto"
+
+- name: THEME - set icons theme Adapta
+  shell: gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
     
