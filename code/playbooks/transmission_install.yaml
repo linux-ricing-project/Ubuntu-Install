@@ -12,7 +12,7 @@
 # ============================================
 # Instalando o Transmission
 # ============================================
-- name: TRANSMISSION - install libre office
+- name: TRANSMISSION - install
   become: yes
   apt:
     name: "transmission"

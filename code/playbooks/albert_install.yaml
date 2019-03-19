@@ -1,14 +1,20 @@
 ---
-- name: ALBERT - Add repositories keys
+- name: ALBERT - add key
+  become: yes
+  apt_key:
+    url: 'https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key'
+    state: present
+
+- name: ALBERT - Add repository
   become: true
   become_method: sudo
   apt_repository:
-    repo: deb http://download.opensuse.org/repositories/home:/manuelschneid3r/Debian_Testing/ /
+    repo: deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /
     state: present
     filename: albert
 
-- name: ALBERT - install albert
+- name: ALBERT - install
   become: yes
   apt:
-    name: albert
-    state: present
+    name: atom
+    state: albert
