@@ -42,3 +42,10 @@ echo "==========================================="
 echo "running ansible job"
 echo "==========================================="
 ansible-playbook --ask-become-pass main.yaml
+
+clear
+echo "==========================================="
+echo "OK"
+echo "Everything is installed."
+echo "Is recommended restart the machine now"
+echo "==========================================="
