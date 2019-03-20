@@ -36,17 +36,25 @@
 - name: THEME - set icons theme Adapta
   shell: gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
 
+- name: THEME - change sibebar position
+  shell: gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+
 - name: THEME - Copy wallpaper file
   copy: 
     src: files/wallpaper.jpg
     dest: /home/{{ user }}/Pictures/wallpaper.jpg
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 600
+
+# - name: Install python-psutil package
+#   become: true
+#   become_method: sudo
+#   apt: 
+#     name: python-psutil
 
 - name: THEME - Set GNOME Wallpaper
   become_user: "{{ user }}"
-  dconf:
-    key: "/org/gnome/desktop/background/picture-uri"
-    value: "'file:///home/{{ user }}/Pictures/wallpaper.jpg'"
+  shell: gsettings set org.gnome.desktop.background picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
+
+- name: THEME - Set GNOME Wallpaper lockscreen
+  become_user: "{{ user }}"
+  shell: gsettings set org.gnome.desktop.screensaver picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
     

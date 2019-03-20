@@ -100,7 +100,7 @@
     # ============================================
     # Instalando os Themes
     # ============================================
-    - import_tasks: themes_install.yaml
+    - import_tasks: gnome_custom_install.yaml
       vars:
           user: "{{ username.stdout }}"
 
