@@ -30,34 +30,55 @@
       - adapta-gtk-theme
       - papirus-icon-theme
 
+# ============================================
+# Set theme to Adapta-Nokto
+# ============================================
 - name: THEME - set to Adapta
   shell: gsettings set org.gnome.desktop.interface gtk-theme "Adapta-Nokto"
 
+# ============================================
+# Set icons-theme to Papirus-Dark
+# ============================================
 - name: THEME - set icons theme Adapta
   shell: gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
 
-- name: THEME - change sibebar position
+# ============================================
+# Set Dash position do BOTTOM
+# ============================================
+- name: THEME - change Dash position
   shell: gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 
+# ============================================
+# Change Dash icon size to 30
+# ============================================
+- name: THEME - change dash icon size
+  shell: gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 30
+
+# ============================================
+# Copy the wallpaper to $HOME/Pictures
+# ============================================
 - name: THEME - Copy wallpaper file
   copy: 
     src: files/wallpaper.jpg
     dest: /home/{{ user }}/Pictures/wallpaper.jpg
 
-- name: THEME - Set GNOME Wallpaper
+# ============================================
+# Set favorite-app in Dash
+# ============================================
+- name: THEME - Set Dash Icons
   become_user: "{{ user }}"
   shell: gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'terminator.desktop', 'spotify.desktop']"
 
-# - name: Install python-psutil package
-#   become: true
-#   become_method: sudo
-#   apt: 
-#     name: python-psutil
-
+# ============================================
+# Set Wallpaper
+# ============================================
 - name: THEME - Set GNOME Wallpaper
   become_user: "{{ user }}"
   shell: gsettings set org.gnome.desktop.background picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
 
+# ============================================
+# Set Wallpaper in lockscreen
+# ============================================
 - name: THEME - Set GNOME Wallpaper lockscreen
   become_user: "{{ user }}"
   shell: gsettings set org.gnome.desktop.screensaver picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg

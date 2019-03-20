@@ -2,36 +2,36 @@
 
 - name: TELEGRAM - create directory
   file:
-   path: "{{ temp_folder }}"
+   path: "{{ telegram_folder }}"
    state: directory
 
 - name: "TELEGRAM - Download"
   get_url:
    url: "{{ item }}"
-   dest: "{{ temp_folder }}"
+   dest: "{{ telegram_folder }}"
   loop:
     - https://telegram.org/dl/desktop/linux
     - https://telegram.org/img/t_logo.png
 
 - name: TELEGRAM - Find XZ file
   find:
-    paths: "{{ temp_folder }}"
+    paths: "{{ telegram_folder }}"
     patterns: "*.xz"
   register: result_xz
 
 - name: TELEGRAM - Extract file
-  shell: tar -xvf {{ result_xz.files[0].path }} -C "{{ temp_folder }}"
+  shell: tar -xvf {{ result_xz.files[0].path }} -C "{{ telegram_folder }}"
   args:
     warn: false
 
 - name: TELEGRAM - Find PNG file
   find:
-    paths: "{{ temp_folder }}"
+    paths: "{{ telegram_folder }}"
     patterns: "*.png"
   register: result_png
 
-- name: Converte logo image size
-  shell: convert -resize 128x128 {{ result_png.files[0].path }} {{ temp_folder }}/telegram_logo.png
+- name: TELEGRAM - Convert logo image size
+  shell: convert -resize 128x128 {{ result_png.files[0].path }} {{ telegram_folder }}/telegram_logo.png
 
 - name: TELEGRAM - remove temporary files
   file:
@@ -40,17 +40,6 @@
   with_items:
     - "{{ result_xz.files[0].path }}"
     - "{{ result_png.files[0].path }}"
-
-- name: TELEGRAM - moving logo file
-  shell: mv {{ temp_folder }}/telegram_logo.png {{ temp_folder }}/Telegram/telegram_logo.png
-
-- name: moving Telegram folder to $HOME
-  shell: mv {{ temp_folder }}/Telegram $HOME
-
-- name: TELEGRAM - remove temporary folder
-  file:
-    path: "{{ temp_folder }}"
-    state: absent
 
 - name: TELEGRAM - generate desktop file
   template:

@@ -79,7 +79,7 @@
     # ============================================
     - include_tasks: telegram/telegram_install.yaml
       vars:
-        temp_folder: $HOME/ubuntu_install_temp
+        telegram_folder: $HOME/Telegram
         user: "{{ username.stdout }}"
 
     # ===========================================
