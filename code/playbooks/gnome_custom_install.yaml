@@ -78,20 +78,17 @@
 # Set favorite-app in Dash
 # ============================================
 - name: THEME - Set Dash Icons
-  become_user: "{{ user }}"
   shell: gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'terminator.desktop', 'spotify.desktop']"
 
 # ============================================
 # Set Wallpaper
 # ============================================
 - name: THEME - Set GNOME Wallpaper
-  become_user: "{{ user }}"
   shell: gsettings set org.gnome.desktop.background picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
 
 # ============================================
 # Set Wallpaper in lockscreen
 # ============================================
 - name: THEME - Set GNOME Wallpaper lockscreen
-  become_user: "{{ user }}"
   shell: gsettings set org.gnome.desktop.screensaver picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
     
