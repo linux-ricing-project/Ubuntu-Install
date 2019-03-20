@@ -44,6 +44,10 @@
     src: files/wallpaper.jpg
     dest: /home/{{ user }}/Pictures/wallpaper.jpg
 
+- name: THEME - Set GNOME Wallpaper
+  become_user: "{{ user }}"
+  shell: gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'terminator.desktop', 'spotify.desktop']"
+
 # - name: Install python-psutil package
 #   become: true
 #   become_method: sudo
