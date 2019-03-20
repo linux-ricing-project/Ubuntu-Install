@@ -101,6 +101,8 @@
     # Instalando os Themes
     # ============================================
     - import_tasks: themes_install.yaml
+      vars:
+          user: "{{ username.stdout }}"
 
     # ===========================================
     # Clean Dependencies

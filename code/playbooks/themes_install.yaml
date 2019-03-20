@@ -35,4 +35,18 @@
 
 - name: THEME - set icons theme Adapta
   shell: gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+
+- name: THEME - Copy wallpaper file
+  copy: 
+    src: files/wallpaper.jpg
+    dest: /home/{{ user }}/Pictures/wallpaper.jpg
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 600
+
+- name: THEME - Set GNOME Wallpaper
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///home/{{ user }}/Pictures/wallpaper.jpg'"
     
