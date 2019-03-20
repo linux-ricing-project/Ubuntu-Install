@@ -43,7 +43,25 @@ echo "running ansible job"
 echo "==========================================="
 ansible-playbook --ask-become-pass main.yaml
 
+echo "==========================================="
+echo "Getting the dotfiles repo..."
+echo "==========================================="
+cd ~
+wget https://github.com/frankjuniorr/dotfiles/archive/master.zip -O dotfiles.zip
+unzip dotfiles.zip
+rm -rf dotfiles.zip
+cd dotfiles-master
+
 clear
+echo "==========================================="
+echo "This is directory of your dotfiles."
+echo "If you wish install now, execute:"
+echo "./install_dotfiles.sh"
+echo "==========================================="
+ls
+
+echo
+echo
 echo "==========================================="
 echo "OK"
 echo "Everything is installed."
