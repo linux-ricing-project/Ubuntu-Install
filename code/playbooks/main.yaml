@@ -13,30 +13,9 @@
   tasks:
 
     # ============================================
-    # Instalando o Spotify
+    # instala ferramentas, dependencies e programas utils
     # ============================================
-    - import_tasks: spotify_install.yaml
-
-    # ============================================
-    # instalando o Atom
-    # ============================================
-    - import_tasks: atom_install.yaml
-
-    # ============================================
-    # Instalando o Libre Office
-    # ============================================
-    - import_tasks: libreoffice_install.yaml
-
-    # ============================================
-    # Instalando o Transmission
-    # ============================================
-    - import_tasks: transmission_install.yaml
-
-
-    # ============================================
-    # instala ferramentas e programas utils
-    # ============================================
-    - name: Install a list of packages
+    - name: Install packages and dependencies
       become: true
       become_method: sudo
       apt:
@@ -56,6 +35,32 @@
         - ubuntu-restricted-extras
         - neofetch
         - terminator
+        - apt-transport-https
+
+    # ============================================
+    # Instalando o Spotify
+    # ============================================
+    - import_tasks: spotify_install.yaml
+
+    # ============================================
+    # Instalando o Libre Office
+    # ============================================
+    - import_tasks: libreoffice_install.yaml
+
+    # ============================================
+    # Instalando o Transmission
+    # ============================================
+    - import_tasks: transmission_install.yaml
+
+    # ============================================
+    # instalando o Atom
+    # ============================================
+    - import_tasks: atom_install.yaml
+
+    # ============================================
+    # instalando o Sublime
+    # ============================================
+    - import_tasks: sublime_install.yaml
 
     # ===========================================
     # Instalando o Dropbox

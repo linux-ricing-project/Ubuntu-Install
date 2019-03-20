@@ -2,19 +2,13 @@
 # File that install and configure Atom
 # ============================================
 ---
-- name: ATOM - install apt-transport-https
-  become: yes
-  apt:
-    name: apt-transport-https
-    state: present
-
 - name: ATOM - install apt key
   become: yes
   apt_key:
     url: 'https://packagecloud.io/AtomEditor/atom/gpgkey'
     state: present
 
-- name: ATOM - add atom repo
+- name: ATOM - add repo
   become: yes
   apt_repository:
     repo: deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
