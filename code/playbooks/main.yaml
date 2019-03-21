@@ -25,6 +25,7 @@
         - git
         - meld
         - jq
+        - vim
         - gdebi-core
         - gnome-tweak-tool
         - python-pip

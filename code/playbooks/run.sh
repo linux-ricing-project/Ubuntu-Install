@@ -54,15 +54,11 @@ cd dotfiles-master
 
 clear
 echo "==========================================="
-echo "This is directory of your dotfiles."
+echo "The dotfiles directory is in your HOME"
 echo "If you wish install now, execute:"
+echo "cd ~/dotfiles-master"
 echo "./install_dotfiles.sh"
-echo "==========================================="
-ls
-
 echo
-echo
-echo "==========================================="
 echo "OK"
 echo "Everything is installed."
 echo "Is recommended restart the machine now"
