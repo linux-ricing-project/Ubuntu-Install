@@ -7,7 +7,7 @@
 
 ubuntu install
 ===========
-[![environment](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)
+[![environment](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg) [![environment](https://img.shields.io/badge/tool-ansible-2196F3.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg)
 
 ## Description
 Install my firsts packages and make initial configs in a Ubuntu formatted. Its recommended Ubuntu 18.04 Minimal Installation.
