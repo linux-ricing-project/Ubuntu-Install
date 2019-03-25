@@ -41,6 +41,6 @@ Download my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles), but
 wget -O - https://raw.githubusercontent.com/frankjuniorr/ubuntu_install/master/code/trigger.sh | bash
 ```
 
-### Desktop example after installation
+## Desktop example after installation
 
 <img alt="Icon" src="screenshot/screenshot.png?raw=true" align="center" hspace="1" vspace="1">
