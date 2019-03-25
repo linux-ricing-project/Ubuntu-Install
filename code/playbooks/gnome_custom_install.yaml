@@ -55,10 +55,28 @@
   shell: gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 30
 
 # ============================================
-# Disable 'show-icons' on Desktop
+# Disable Trash icon on Desktop
 # ============================================
-- name: THEME - Disable icons on Desktop
-  shell: gsettings set org.gnome.desktop.background show-desktop-icons false
+- name: THEME - Disable Trash icon on Desktop
+  shell: gsettings set org.gnome.nautilus.desktop trash-icon-visible false
+
+# ============================================
+# Disable Network Servers icon on Desktop
+# ============================================
+- name: THEME - Disable Trash icon on Desktop
+  shell: gsettings set org.gnome.nautilus.desktop network-icon-visible false
+
+# ============================================
+# Disable Home folder icon on Desktop
+# ============================================
+- name: THEME - Disable Trash icon on Desktop
+  shell: gsettings set org.gnome.nautilus.desktop home-icon-visible false
+
+# ============================================
+# Disable Mounted Volumes icon on Desktop
+# ============================================
+- name: THEME - Disable Trash icon on Desktop
+  shell: gsettings set org.gnome.nautilus.desktop volumes-visible false
 
 # ============================================
 # Change control buttons to the left position
