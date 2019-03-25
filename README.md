@@ -12,6 +12,8 @@ ubuntu install
 ## Description
 Install my firsts packages and make initial configs in a Ubuntu formatted. Its recommended Ubuntu 18.04 Minimal Installation.
 
+OBS: The most of the installation is done by [Ansible](https://github.com/ansible/ansible)
+
 The installation is divided in 6 parts
 
 ### 1. Initial Upgrade
@@ -31,13 +33,8 @@ Install all packages. Basically the packages are:
 
 ### 3. Clean dependencies
 Clean packages with `sudo apt -f -y install` to fix broken packages and `sudo apt-get autoremove && sudo apt-get clean` to clean.
-### 4. Install development environment
-call the `development_install.sh` to install dev enviroment, that are:
-- Postman
-- nodeJs
-- npm
-- call the `java_install.sh` to install Oracle JDK 8
-- Android Studio
+### 4. Download my dotfiles
+Download my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles), but not install, only download. Because of my dotfiles installation is necessary the user interation.
 
 ## Install without git in a Ubuntu formatted
 ```bash
