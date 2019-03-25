@@ -37,6 +37,13 @@
         - neofetch
         - terminator
         - apt-transport-https
+        - software-properties-common
+        - zip
+        - gzip
+        - unzip
+        - bzip2
+        - tar
+        - nano
 
     # ============================================
     # Instalando o Spotify
