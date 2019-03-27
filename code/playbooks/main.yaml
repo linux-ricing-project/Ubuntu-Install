@@ -44,6 +44,7 @@
         - bzip2
         - tar
         - nano
+        - gnome-shell-extensions
 
     # ============================================
     # Instalando o Spotify
