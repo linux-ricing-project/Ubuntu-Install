@@ -1,5 +1,11 @@
 #!/bin/bash
 
+################################################################################
+# Configurações
+# set:
+# -e: se encontrar algum erro, termina a execução imediatamente
+set -e
+
 # ============================================
 # mostrar o banner inicial
 # ============================================
@@ -41,7 +47,7 @@ init_updates
 echo "==========================================="
 echo "running ansible job"
 echo "==========================================="
-ansible-playbook --ask-become-pass main.yaml
+ansible-playbook -v --ask-become-pass main.yaml
 
 echo "==========================================="
 echo "Getting the dotfiles repo..."
