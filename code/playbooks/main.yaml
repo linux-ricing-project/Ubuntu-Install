@@ -73,7 +73,7 @@
         - bzip2
         - tar
         - nano
-        - gnome-shell-extensions
+        - chrome-gnome-shell
 
     # ============================================
     # Instalando o Spotify
@@ -141,6 +141,10 @@
     - import_tasks: gnome_custom_install.yaml
       vars:
           user: "{{ username.stdout }}"
+          hide_activities_extension_url: https://extensions.gnome.org/extension-data/hide-activities-button%40gnome-shell-extensions.bookmarkd.xyz.v1.shell-extension.zip
+          hide_activities_filename: hide_activities_extension.zip
+          move_clock_extension_url: https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v19.shell-extension.zip
+          move_clock_filename: clock_extension.zip
 
     # ===========================================
     # Clean Dependencies

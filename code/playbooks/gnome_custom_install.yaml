@@ -115,4 +115,34 @@
 # ============================================
 - name: THEME - Set GNOME Wallpaper lockscreen
   shell: gsettings set org.gnome.desktop.screensaver picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
-    
+
+  # ###################################
+  # testando extensions
+
+- name: EXTENSION - Apply Move Clock
+  get_url:
+    url: "{{ move_clock_extension_url }}"
+    dest: "/home/{{ user }}/Downloads/{{ hide_activities_filename }}"
+
+- name: EXTENSION - get uuid Move Clock
+  shell: unzip -c "/home/{{ user }}/Downloads/{{ hide_activities_filename }}" metadata.json | grep uuid | cut -d \" -f4
+  register: uuid_clock_extension
+
+- name: EXTENSION - Create 'Move Clock' Extension Directory
+  file:
+    path: "/home/{{ user }}/.local/share/gnome-shell/extensions/{{ uuid_clock_extension }}"
+    state: directory
+    mode: 0700
+
+- name: EXTENSION - Extract extension in folder
+  unarchive:
+    src: "/home/{{ user }}/Downloads/{{ hide_activities_filename }}"
+    dest: "/home/{{ user }}/.local/share/gnome-shell/extensions/{{ uuid_clock_extension }}"
+
+- name: EXTENSION - Apply extension
+  shell: gnome-shell-extension-tool -e {{ uuid_clock_extension }}
+
+- name: EXTENSION - delete zip
+  file:
+    path: "/home/{{ user }}/Downloads/{{ hide_activities_filename }}"
+    state: absent
