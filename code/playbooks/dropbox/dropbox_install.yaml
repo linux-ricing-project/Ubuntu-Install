@@ -2,11 +2,6 @@
 - name: DROPBOX - download
   shell: cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
-- name: DROPBOX - create autostart folder
-  file:
-   path: "$HOME/.config/autostart"
-   state: directory
-
 - name: DROPBOX - generate desktop file
   template:
     src: "dropbox.desktop.j2"

@@ -13,9 +13,38 @@
   tasks:
 
     # ============================================
+    # Criando o diretório $HOME/bin
+    # ============================================
+    - name: UBUNTU - Create $HOME/bin Directory
+      file:
+        path: "{{ ansible_env.HOME }}/bin"
+        state: directory
+        mode: 0700
+
+    # ============================================
+    # Removendo os diretório do #HOME que eu não uso
+    # ============================================
+    - name: UBUNTU - Remove useless folders
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - "~/Templates"
+        - "~/Public"
+        - "~/examples.desktop"
+
+    # ============================================
+    # Criando o diretório de autostart
+    # ============================================
+    - name: UBUNTU - create autostart folder
+      file:
+       path: "$HOME/.config/autostart"
+       state: directory
+
+    # ============================================
     # instala ferramentas, dependencies e programas utils
     # ============================================
-    - name: Install packages and dependencies
+    - name: UBUNTU - Install packages and dependencies
       become: true
       become_method: sudo
       apt:
@@ -90,27 +119,6 @@
       vars:
         telegram_folder: $HOME/bin/Telegram
         user: "{{ username.stdout }}"
-
-    # ============================================
-    # Criando o diretório $HOME/bin
-    # ============================================
-    - name: GNOME - Create $HOME/bin Directory
-      file:
-        path: "{{ ansible_env.HOME }}/bin"
-        state: directory
-        mode: 0700
-
-    # ============================================
-    # Removendo os diretório do #HOME que eu não uso
-    # ============================================
-    - name: GNOME - Remove useless folders
-      file:
-        path: "{{ item }}"
-        state: absent
-      with_items:
-        - "~/Templates"
-        - "~/Public"
-        - "~/examples.desktop"
 
     # ===========================================
     # Instalando o Google Chrome
