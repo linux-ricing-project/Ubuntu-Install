@@ -17,7 +17,7 @@
     # ============================================
     - name: UBUNTU - Create $HOME/bin Directory
       file:
-        path: "{{ ansible_env.HOME }}/bin"
+        path: "$HOME/bin"
         state: directory
         mode: 0700
 
