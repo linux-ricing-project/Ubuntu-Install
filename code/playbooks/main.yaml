@@ -125,16 +125,6 @@
     # ===========================================
     - include_tasks: google_chrome_install.yaml
 
-    # ===========================================
-    # Instalando o Calibre
-    # ===========================================
-    - name: CALIBRE - installing
-      become: true
-      become_method: sudo
-      shell: wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
-      args:
-        warn: false
-
     # ============================================
     # Instalando os Themes
     # ============================================

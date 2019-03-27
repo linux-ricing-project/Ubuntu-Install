@@ -132,21 +132,21 @@
   debug:
     msg: "{{ uuid_clock_extension }}"
 
-# - name: EXTENSION - Create 'Move Clock' Extension Directory
-#   file:
-#     path: "/home/{{ user }}/.local/share/gnome-shell/extensions/{{ uuid_clock_extension }}"
-#     state: directory
-#     mode: 0700
+- name: EXTENSION - Create 'Move Clock' Extension Directory
+  file:
+    path: "/home/{{ user }}/.local/share/gnome-shell/extensions/{{ uuid_clock_extension.stdout_lines }}"
+    state: directory
+    mode: 0700
 
-# - name: EXTENSION - Extract extension in folder
-#   unarchive:
-#     src: "/home/{{ user }}/Downloads/{{ hide_activities_filename }}"
-#     dest: "/home/{{ user }}/.local/share/gnome-shell/extensions/{{ uuid_clock_extension }}"
+- name: EXTENSION - Extract extension in folder
+  unarchive:
+    src: "/home/{{ user }}/Downloads/{{ hide_activities_filename }}"
+    dest: "/home/{{ user }}/.local/share/gnome-shell/extensions/{{ uuid_clock_extension.stdout_lines }}"
 
-# - name: EXTENSION - Apply extension
-#   shell: gnome-shell-extension-tool -e {{ uuid_clock_extension }}
+- name: EXTENSION - Apply extension
+  shell: gnome-shell-extension-tool -e {{ uuid_clock_extension.stdout_lines }}
 
-# - name: EXTENSION - delete zip
-#   file:
-#     path: "/home/{{ user }}/Downloads/{{ hide_activities_filename }}"
-#     state: absent
+- name: EXTENSION - delete zip
+  file:
+    path: "/home/{{ user }}/Downloads/{{ hide_activities_filename }}"
+    state: absent
