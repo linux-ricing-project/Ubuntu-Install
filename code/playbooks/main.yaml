@@ -4,9 +4,7 @@
   connection: local
   gather_facts: false
 
-  pre_tasks:
-
-    vars_prompt:
+  vars_prompt:
     - name: "git_user"
       prompt: "Whats your name?"
       private: no
@@ -27,6 +25,12 @@
     - name: DEBUG EMAIL
       debug:
         msg: "{{ git_email }}"
+
+  pre_tasks:
+
+    - name: UTILS - get username
+      shell: whoami
+      register: username
 
   tasks:
 
