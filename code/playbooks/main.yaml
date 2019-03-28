@@ -4,11 +4,28 @@
   connection: local
   gather_facts: false
 
+  vars_prompt:
+    - name: username
+      prompt: "Enter Git username"
+      private: no
+
+    - name: email
+      prompt: "Enter Git email address"
+      private: no
+
   pre_tasks:
 
     - name: UTILS - get username
       shell: whoami
       register: username
+
+    - name: DEBUG username
+      debug:
+        msg: "{{ username }}"
+
+    - name: DEBUG username
+      debug:
+        msg: "{{ email }}"
 
   tasks:
 
