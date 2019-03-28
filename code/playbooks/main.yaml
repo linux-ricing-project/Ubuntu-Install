@@ -188,8 +188,6 @@
     # ===========================================
     # Instalando os meus dotfiles
     # ===========================================
-    - include_tasks: dotfiles/dotfiles.yaml
+    - include_tasks: dotfiles.yaml
       vars:
         user: "{{ username.stdout }}"
-        git_user: "{{ git_user }}"
-        git_email: "{{ git_email }}"

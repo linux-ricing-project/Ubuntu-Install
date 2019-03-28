@@ -48,24 +48,18 @@ init_updates(){
 show_header
 init_updates
 
-echo "======== GIT CONFIG ========"
-echo "Whats your name?"
-read git_user
-echo "Whats your email?"
-read git_email
-
 echo "==========================================="
 echo "Running Ansible Job"
 echo "==========================================="
-echo -n | ansible-playbook --ask-become-pass \
-  --extra-vars "git_user=$git_user git_email=$git_email" main.yaml
-
-echo "==========================================="
-echo "Getting the dotfiles repo..."
-echo "==========================================="
+ansible-playbook --ask-become-pass main.yaml
 
 clear
 echo "==========================================="
+echo "The dotfiles directory is in your HOME"
+echo "If you wish install now, execute:"
+echo "cd ~/dotfiles-master"
+echo "./install_dotfiles.sh"
+echo
 echo "OK"
 echo "Everything is installed."
 echo "Is recommended restart the machine now"
