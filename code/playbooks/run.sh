@@ -26,18 +26,20 @@ HEADER
 init_updates(){
   # updagrade inicial, por volta de uns 300 MB
   echo "==========================================="
-  echo "Fazendo as atualizações iniciais..."
+  echo "Do the initial upgrades..."
   echo "==========================================="
   sudo apt -y upgrade
   sudo apt -y dist-upgrade
   sudo apt -y full-upgrade
 
 	echo "==========================================="
-  echo "instalando o ansible..."
+  echo "Installing Ansible..."
   echo "==========================================="
-	sudo apt -y install software-properties-common
-	sudo apt-add-repository --yes --update ppa:ansible/ansible
-	sudo apt -y install ansible curl wget
+  if ! type ansible > /dev/null 2>&1; then
+    sudo apt -y install software-properties-common
+  sudo apt-add-repository --yes --update ppa:ansible/ansible
+  sudo apt -y install ansible curl wget
+  fi
 }
 
 show_header
@@ -45,7 +47,7 @@ init_updates
 
 # runnind playbook
 echo "==========================================="
-echo "running ansible job"
+echo "Running Ansible Job"
 echo "==========================================="
 ansible-playbook --ask-become-pass main.yaml
 

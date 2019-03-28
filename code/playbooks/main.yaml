@@ -132,17 +132,17 @@
       vars:
           user: "{{ username.stdout }}"
 
-    # ===========================================
-    # Instalando a Extensão 'Hide Activities'
-    # ===========================================
-    - include_tasks: gnome_extensions.yaml
-      vars:
-        url: https://extensions.gnome.org/extension-data/hide-activities-button%40gnome-shell-extensions.bookmarkd.xyz.v1.shell-extension.zip
-        filename: hide_activities_extension.zip
-
     - name: DEBUG env vars
       debug:
         msg: "{{ ansible_env.HOME }}"
+
+    # ===========================================
+    # Instalando a Extensão 'Hide Activities'
+    # ===========================================
+    # - include_tasks: gnome_extensions.yaml
+    #   vars:
+    #     url: https://extensions.gnome.org/extension-data/hide-activities-button%40gnome-shell-extensions.bookmarkd.xyz.v1.shell-extension.zip
+    #     filename: hide_activities_extension.zip
 
     # ===========================================
     # Instalando a Extensão 'Move Clock'
