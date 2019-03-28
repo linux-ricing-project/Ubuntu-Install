@@ -10,15 +10,6 @@
       shell: whoami
       register: username
 
-  vars_prompt:
-    - name: "git_user"
-      prompt: "Whats your name?"
-      private: no
-
-    - name: "git_email"
-      prompt: "Whats your email?"
-      private: no
-
   tasks:
 
     # ============================================
@@ -194,10 +185,11 @@
       apt:
         autoremove: yes
 
-    - name: DEBUG USER
-      debug:
-        msg: "{{ git_user }}"
-
-    - name: DEBUG EMAIL
-      debug:
-        msg: "{{ git_email }}"
+    # ===========================================
+    # Instalando os meus dotfiles
+    # ===========================================
+    - include_tasks: dotfiles/dotfiles.yaml
+      vars:
+        user: "{{ username.stdout }}"
+        git_user: "{{ git_user }}"
+        git_email: "{{ git_email }}"

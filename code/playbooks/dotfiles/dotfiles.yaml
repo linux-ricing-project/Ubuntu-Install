@@ -1,0 +1,33 @@
+---
+  # ============================================
+  # Download Dotfiles
+  # ============================================
+  - name: DOTFILES - Download
+    get_url:
+      url: "https://github.com/frankjuniorr/dotfiles/archive/master.zip"
+      dest: "/home/{{ user }}/Downloads/dotfiles.zip"
+
+  # ============================================
+  # Extract Dotfiles
+  # ============================================
+  - name: DOTFILES - Extract files
+    unarchive:
+      src: "/home/{{ user }}/Downloads/dotfiles.zip"
+      dest: "/home/{{ user }}/Downloads/"
+
+  # ============================================
+  # Delete dotfiles zip
+  # ============================================
+  - name: DOTFILES - delete zip
+    file:
+      path: "/home/{{ user }}/Downloads/dotfiles.zip"
+      state: absent
+    changed_when: no
+
+  # ============================================
+  # Criando as configurações do git
+  # ============================================
+  - name: GIT - generate desktop file
+    template:
+      src: "gitconfig.local.j2"
+      dest: "/home/{{ user }}/.gitconfig.local"
