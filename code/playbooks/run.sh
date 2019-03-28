@@ -32,13 +32,16 @@ init_updates(){
   sudo apt -y dist-upgrade
   sudo apt -y full-upgrade
 
-	echo "==========================================="
-  echo "Installing Ansible..."
-  echo "==========================================="
+  # ============================================
+  # Instalando o Ansible
+  # ============================================
   if ! type ansible > /dev/null 2>&1; then
+    echo "==========================================="
+    echo "Installing Ansible..."
+    echo "==========================================="
     sudo apt -y install software-properties-common
-  sudo apt-add-repository --yes --update ppa:ansible/ansible
-  sudo apt -y install ansible curl wget
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
+    sudo apt -y install ansible curl wget
   fi
 }
 
