@@ -140,23 +140,27 @@
         url: https://extensions.gnome.org/extension-data/hide-activities-button%40gnome-shell-extensions.bookmarkd.xyz.v1.shell-extension.zip
         filename: hide_activities_extension.zip
 
+    - name: DEBUG env vars
+      debug:
+        msg: "{{ ansible_env.HOME }}"
+
     # ===========================================
     # Instalando a Extensão 'Move Clock'
     # ===========================================
-    - include_tasks: gnome_extensions.yaml
-      vars:
-        url: https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v19.shell-extension.zip
-        filename: clock_extension.zip
-        home_folder: "{{ ansible_env.HOME }}"
+    # - include_tasks: gnome_extensions.yaml
+    #   vars:
+    #     url: https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v19.shell-extension.zip
+    #     filename: clock_extension.zip
+    #     home_folder: "{{ ansible_env.HOME }}"
 
-    # ===========================================
-    # Instalando a Extensão 'Open Weather'
-    # ===========================================
-    - include_tasks: gnome_extensions.yaml
-      vars:
-        url: https://extensions.gnome.org/extension-data/openweather-extension%40jenslody.de.v97.shell-extension.zip
-        filename: open_weather.zip
-        home_folder: "{{ ansible_env.HOME }}"
+    # # ===========================================
+    # # Instalando a Extensão 'Open Weather'
+    # # ===========================================
+    # - include_tasks: gnome_extensions.yaml
+    #   vars:
+    #     url: https://extensions.gnome.org/extension-data/openweather-extension%40jenslody.de.v97.shell-extension.zip
+    #     filename: open_weather.zip
+    #     home_folder: "{{ ansible_env.HOME }}"
 
     # ===========================================
     # Clean Dependencies
