@@ -57,7 +57,7 @@ read git_email
 echo "==========================================="
 echo "Running Ansible Job"
 echo "==========================================="
-ansible-playbook --ask-become-pass \
+echo -n | ansible-playbook --ask-become-pass \
   --extra-vars "git_user=$git_user git_email=$git_email" main.yaml
 
 echo "==========================================="
