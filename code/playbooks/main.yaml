@@ -147,6 +147,7 @@
       vars:
         url: https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v19.shell-extension.zip
         filename: clock_extension.zip
+        home_folder: "{{ ansible_env.HOME }}"
 
     # ===========================================
     # Instalando a Extensão 'Open Weather'
@@ -155,6 +156,7 @@
       vars:
         url: https://extensions.gnome.org/extension-data/openweather-extension%40jenslody.de.v97.shell-extension.zip
         filename: open_weather.zip
+        home_folder: "{{ ansible_env.HOME }}"
 
     # ===========================================
     # Clean Dependencies
