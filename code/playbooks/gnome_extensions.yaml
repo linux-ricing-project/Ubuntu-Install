@@ -11,7 +11,7 @@
 # get uuid Move Clock
 # ============================================
 - name: EXTENSION - get uuid
-  shell: unzip -c "/home/{{ user }}/Downloads/{{ filename }}" metadata.json | grep uuid | cut -d \" -f4
+  shell: unzip -c "$HOME/Downloads/{{ filename }}" metadata.json | grep uuid | cut -d \" -f4
   register: uuid
 
 # ============================================
