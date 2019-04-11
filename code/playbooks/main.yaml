@@ -52,6 +52,7 @@
       vars:
         packages:
         - git
+        - git-extras
         - meld
         - jq
         - vim
@@ -89,16 +90,6 @@
     # Instalando o Transmission
     # ============================================
     - import_tasks: transmission_install.yaml
-
-    # ============================================
-    # instalando o Atom
-    # ============================================
-    - import_tasks: atom_install.yaml
-
-    # ============================================
-    # instalando o Sublime
-    # ============================================
-    - import_tasks: sublime_install.yaml
 
     # ===========================================
     # Instalando o Dropbox
