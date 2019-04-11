@@ -1,9 +1,9 @@
 workflow "Deploy Release" {
   on = "push"
-  resolves = ["frankjuniorr/github-create-release-action@dev"]
+  resolves = ["Github Create Release"]
 }
 
-action "frankjuniorr/github-create-release-action@dev" {
-  uses = "frankjuniorr/github-create-release-action@dev"
+action "Github Create Release" {
+  uses = "frankjuniorr/github-create-release-action/action-github-create-release@master"
   secrets = ["GITHUB_TOKEN"]
 }
