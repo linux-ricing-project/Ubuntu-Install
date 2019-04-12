@@ -77,6 +77,11 @@
         - chrome-gnome-shell
 
     # ============================================
+    # Instalando o Visual Studio Code
+    # ============================================
+    - import_tasks: vs_code_install.yaml
+
+    # ============================================
     # Instalando o Spotify
     # ============================================
     - import_tasks: spotify_install.yaml
