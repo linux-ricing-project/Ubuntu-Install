@@ -6,7 +6,7 @@ wget https://github.com/frankjuniorr/ubuntu_install/archive/dev.zip -O ubuntu_in
 unzip ubuntu_install.zip
 rm -rf ubuntu_install.zip
 
-cd ubuntu_install-master/code/playbooks
+cd ubuntu_install-dev/code/playbooks
 clear
 
 ./run.sh
