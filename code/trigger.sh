@@ -11,4 +11,4 @@ clear
 
 ./run.sh
 
-rm -rf "${root_location}/ubuntu_install-master"
+rm -rf "${root_location}/ubuntu_install-dev"
