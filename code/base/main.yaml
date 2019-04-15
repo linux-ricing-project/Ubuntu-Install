@@ -75,6 +75,7 @@
         - tar
         - nano
         - chrome-gnome-shell
+        - xclip
 
     # ============================================
     # Instalando o Visual Studio Code

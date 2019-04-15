@@ -29,3 +29,6 @@
   apt:
     name: "code"
     state: present
+
+- name: VS CODE - install sync-settings extensions
+  shell: code --install-extension Shan.code-settings-sync

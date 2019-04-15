@@ -79,6 +79,25 @@
   shell: gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
 
 # ============================================
+# Copy the profile picture to $HOME/Pictures
+# ============================================
+- name: THEME - Copy user profile picture
+  copy: 
+    src: files/profile.jpg
+    dest: /home/{{ user }}/Pictures/profile.jpg
+
+# ============================================
+# set profile picture
+# ============================================
+- name: THEME - Change user profile picture
+  become: true
+  become_method: sudo
+  lineinfile:
+    path: /var/lib/AccountsService/users/{{ user }}
+    regexp: '^Icon='
+    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+
+# ============================================
 # Copy the wallpaper to $HOME/Pictures
 # ============================================
 - name: THEME - Copy wallpaper file
@@ -117,9 +136,40 @@
   shell: gsettings set org.gnome.desktop.interface gtk-theme "Adapta-Nokto"
 
 # ============================================
+# Download another icon theme from github
+# ============================================
+- name: THEME - Download Korla icon theme
+  git:
+    repo: https://github.com/bikass/korla.git
+    dest: .temp_folder
+
+# ============================================
+# Creating $HOME/.icons folder
+# ============================================
+- name: THEME - Creating $HOME/.icons folder
+  file:
+    path: /home/{{ user }}/.icons
+    state: directory
+
+# ============================================
+# THEME - Copying Korla files
+# OBS: Using module 'shell' was faster than use 'copy' module
+# ============================================
+- name: THEME - Copying Korla files
+  shell: cd .temp_folder && mv korla korla-light /home/{{ user }}/.icons
+
+# ============================================
+# Deleting temporary folder
+# ============================================
+- name: THEME - Deleting temporary folder
+  file:
+    state: absent
+    path: ".temp_folder"
+
+# ============================================
 # Set icons-theme to Papirus-Dark
 # ============================================
 - name: THEME - set icons theme Adapta
-  shell: gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+  shell: gsettings set org.gnome.desktop.interface icon-theme "Korla"
 
 
