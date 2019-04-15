@@ -17,14 +17,14 @@
     url: 'https://packages.microsoft.com/keys/microsoft.asc'
     state: present
 
-- name: VS CODE - install
+- name: VS CODE - add repository
   become: yes
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
     state: present
 
-- name: install VS Code (apt)
+- name: VS CODE - install
   become: yes
   apt:
     name: "code"

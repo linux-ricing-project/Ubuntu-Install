@@ -1,6 +1,6 @@
 ---
 
-- name: DROPBOX Check if direactory already exist
+- name: DROPBOX Check if directory already exist
   stat: 
     path: $HOME/.dropbox-dist
   register: dropbox_folder

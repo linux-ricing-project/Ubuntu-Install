@@ -99,10 +99,16 @@
   shell: gsettings set org.gnome.desktop.background picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
 
 # ============================================
+# Build lock screen wallpaper
+# ============================================
+- name: THEME - Build the lockscreen wallpaper
+  shell: convert /home/{{ user }}/Pictures/wallpaper.jpg -blur 0x8 /home/{{ user }}/Pictures/wallpaper_lockscreen.jpg
+
+# ============================================
 # Set Wallpaper in lockscreen
 # ============================================
 - name: THEME - Set GNOME Wallpaper lockscreen
-  shell: gsettings set org.gnome.desktop.screensaver picture-uri file:///home/{{ user }}/Pictures/wallpaper.jpg
+  shell: gsettings set org.gnome.desktop.screensaver picture-uri file:///home/{{ user }}/Pictures/wallpaper_lockscreen.jpg
 
 # ============================================
 # Set theme to Adapta-Nokto
