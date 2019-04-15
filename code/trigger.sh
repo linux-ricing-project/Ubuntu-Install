@@ -8,7 +8,7 @@ wget https://github.com/frankjuniorr/ubuntu_install/archive/${branch}.zip -O ubu
 unzip ubuntu_install.zip
 rm -rf ubuntu_install.zip
 
-cd ubuntu_install-${branch}/code/playbooks
+cd ubuntu_install-${branch}/code/base
 clear
 
 ./run.sh

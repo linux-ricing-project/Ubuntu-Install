@@ -86,16 +86,6 @@
     # ============================================
     - import_tasks: spotify_install.yaml
 
-    # ============================================
-    # Instalando o Libre Office
-    # ============================================
-    - import_tasks: libreoffice_install.yaml
-
-    # ============================================
-    # Instalando o Transmission
-    # ============================================
-    - import_tasks: transmission_install.yaml
-
     # ===========================================
     # Instalando o Dropbox
     # ===========================================
@@ -107,14 +97,6 @@
     # Instalando o Albert
     # ============================================
     - include_tasks: albert_install.yaml
-
-    # ============================================
-    # Instalando o Telegram Desktop
-    # ============================================
-    - include_tasks: telegram/telegram_install.yaml
-      vars:
-        telegram_folder: $HOME/bin/Telegram
-        user: "{{ username.stdout }}"
 
     # ===========================================
     # Instalando o Google Chrome
