@@ -128,6 +128,12 @@
       vars:
         user: "{{ username.stdout }}"
 
+    # ============================================
+    # Disable all extension first
+    # ============================================
+    - name: EXTENSION - Disable all extension first
+      shell: gsettings set org.gnome.shell enabled-extensions "[]"
+
     # ===========================================
     # Instalando a Extensão 'Hide Activities'
     # ===========================================

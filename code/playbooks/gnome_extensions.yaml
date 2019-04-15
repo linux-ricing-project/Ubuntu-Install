@@ -35,12 +35,6 @@
     dest: "/home/{{ user }}/.local/share/gnome-shell/extensions/{{ uuid.stdout }}"
 
 # ============================================
-# Disable all extension first
-# ============================================
-- name: EXTENSION - Disable all extension first
-  shell: gsettings set org.gnome.shell enabled-extensions "[]"
-
-# ============================================
 # Apply extension
 # ============================================
 - name: EXTENSION - Apply extension
