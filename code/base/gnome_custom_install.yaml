@@ -167,7 +167,7 @@
     path: ".temp_folder"
 
 # ============================================
-# Set icons-theme to Papirus-Dark
+# Set icons-theme to Korla
 # ============================================
 - name: THEME - set icons theme Adapta
   shell: gsettings set org.gnome.desktop.interface icon-theme "Korla"
