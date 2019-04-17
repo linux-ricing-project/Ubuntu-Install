@@ -15,7 +15,7 @@
     filename: "{{ item.value }}"
   loop:
     - {key: 'ppa:tista/adapta',value: "adapta_theme"}
-    - {key: 'ppa:papirus/papirus',value: "adapta_icon_theme"}
+    - {key: 'ppa:papirus/papirus',value: "papirus_icon_theme"}
 
 # ============================================
 # Instalando os Themes
@@ -89,6 +89,26 @@
 # ============================================
 # set profile picture
 # ============================================
+
+# verify if exist line 'Icon=' in file
+- name: THEME - Verify the user profile picture
+  shell: grep -q "^Icon=" /var/lib/AccountsService/users/{{ user }}
+  check_mode: no
+  register: is_icon
+  failed_when: false
+  no_log: True
+  changed_when: no
+
+# adicione a linha after background caso não tenha
+- name: THEME - Add user profile picture
+  lineinfile:
+  path: /var/lib/AccountsService/users/{{ user }}
+  regexp: '^Icon='
+  insertafter: '^Background='
+  line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+  when: is_icon.rc == 1
+
+# if line exist, replace with new value
 - name: THEME - Change user profile picture
   become: true
   become_method: sudo
@@ -96,6 +116,7 @@
     path: /var/lib/AccountsService/users/{{ user }}
     regexp: '^Icon='
     line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+  when: is_icon.rc == 0
 
 # ============================================
 # Copy the wallpaper to $HOME/Pictures
@@ -170,6 +191,6 @@
 # Set icons-theme to Korla
 # ============================================
 - name: THEME - set icons theme Adapta
-  shell: gsettings set org.gnome.desktop.interface icon-theme "Korla"
+  shell: gsettings set org.gnome.desktop.interface icon-theme "korla"
 
 
