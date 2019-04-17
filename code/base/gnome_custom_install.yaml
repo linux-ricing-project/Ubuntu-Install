@@ -87,56 +87,6 @@
     dest: /home/{{ user }}/Pictures/profile.jpg
 
 # ============================================
-# set profile picture
-# ============================================
-
-# verify if exist line 'Icon=' in file
-- name: THEME - Verify the user profile picture
-  shell: grep -q "^Icon=" /var/lib/AccountsService/users/{{ user }}
-  check_mode: no
-  register: is_icon
-  failed_when: false
-  no_log: True
-  changed_when: no
-
-- name: DEBUG - lendo o arquivo 1
-  shell: cat /var/lib/AccountsService/users/{{ user }}
-  register: debug_temp
-
-- name: DEBUG - verify file
-  debug:
-    msg: "{{ debug_temp }}"
-
-# if line don't exist, add a new line
-- name: THEME - Add user profile picture
-  become: true
-  become_method: sudo
-  lineinfile:
-    path: /var/lib/AccountsService/users/{{ user }}
-    regexp: '^Icon='
-    insertafter: '^Background='
-    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
-  when: is_icon.rc == 1
-
-# if line exist, replace with new value
-- name: THEME - Change user profile picture
-  become: true
-  become_method: sudo
-  lineinfile:
-    path: /var/lib/AccountsService/users/{{ user }}
-    regexp: '^Icon='
-    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
-  when: is_icon.rc == 0
-
-- name: DEBUG - lendo o arquivo 2
-  shell: cat /var/lib/AccountsService/users/{{ user }}
-  register: debug_temp
-
-- name: DEBUG - verify file
-  debug:
-    msg: "{{ debug_temp }}"
-
-# ============================================
 # Copy the wallpaper to $HOME/Pictures
 # ============================================
 - name: THEME - Copy wallpaper file
@@ -212,3 +162,52 @@
   shell: gsettings set org.gnome.desktop.interface icon-theme "korla"
 
 
+# ============================================
+# set profile picture
+# ============================================
+
+# verify if exist line 'Icon=' in file
+- name: THEME - Verify the user profile picture
+  shell: grep -q "^Icon=" /var/lib/AccountsService/users/{{ user }}
+  check_mode: no
+  register: is_icon
+  failed_when: false
+  no_log: True
+  changed_when: no
+
+- name: DEBUG - lendo o arquivo 1
+  shell: cat /var/lib/AccountsService/users/{{ user }}
+  register: debug_temp
+
+- name: DEBUG - verify file
+  debug:
+    msg: "{{ debug_temp }}"
+
+# if line don't exist, add a new line
+- name: THEME - Add user profile picture
+  become: true
+  become_method: sudo
+  lineinfile:
+    path: /var/lib/AccountsService/users/{{ user }}
+    regexp: '^Icon='
+    insertafter: '^Background='
+    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+  when: is_icon.rc == 1
+
+# if line exist, replace with new value
+- name: THEME - Change user profile picture
+  become: true
+  become_method: sudo
+  lineinfile:
+    path: /var/lib/AccountsService/users/{{ user }}
+    regexp: '^Icon='
+    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+  when: is_icon.rc == 0
+
+- name: DEBUG - lendo o arquivo 2
+  shell: cat /var/lib/AccountsService/users/{{ user }}
+  register: debug_temp
+
+- name: DEBUG - verify file
+  debug:
+    msg: "{{ debug_temp }}"
