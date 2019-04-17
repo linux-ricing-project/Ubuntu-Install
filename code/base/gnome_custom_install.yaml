@@ -101,6 +101,8 @@
 
 # if line don't exist, add a new line
 - name: THEME - Add user profile picture
+  become: true
+  become_method: sudo
   lineinfile:
     path: /var/lib/AccountsService/users/{{ user }}
     regexp: '^Icon='
