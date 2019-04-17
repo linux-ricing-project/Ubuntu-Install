@@ -4,6 +4,6 @@ workflow "Deploy Release" {
 }
 
 action "Github Create Release" {
-  uses = "frankjuniorr/github-create-release-action/action-github-create-release@master"
+  uses = "frankjuniorr/github-create-release-action@master"
   secrets = ["GITHUB_TOKEN"]
 }

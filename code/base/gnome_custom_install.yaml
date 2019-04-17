@@ -99,13 +99,13 @@
   no_log: True
   changed_when: no
 
-# adicione a linha after background caso não tenha
+# if line don't exist, add a new line
 - name: THEME - Add user profile picture
   lineinfile:
-  path: /var/lib/AccountsService/users/{{ user }}
-  regexp: '^Icon='
-  insertafter: '^Background='
-  line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+    path: /var/lib/AccountsService/users/{{ user }}
+    regexp: '^Icon='
+    insertafter: '^Background='
+    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
   when: is_icon.rc == 1
 
 # if line exist, replace with new value
