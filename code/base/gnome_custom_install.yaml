@@ -83,8 +83,8 @@
 # ============================================
 - name: THEME - Copy user profile picture
   copy: 
-    src: files/profile.jpg
-    dest: /home/{{ user }}/Pictures/profile.jpg
+    src: files/profile.png
+    dest: /home/{{ user }}/Pictures/profile.png
 
 # ============================================
 # Copy the wallpaper to $HOME/Pictures
@@ -191,7 +191,7 @@
     path: /var/lib/AccountsService/users/{{ user }}
     regexp: '^Icon='
     insertafter: '^Background='
-    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+    line: 'Icon=/home/{{ user }}/Pictures/profile.png'
   when: is_icon.rc == 1
 
 # if line exist, replace with new value
@@ -201,13 +201,5 @@
   lineinfile:
     path: /var/lib/AccountsService/users/{{ user }}
     regexp: '^Icon='
-    line: 'Icon=/home/{{ user }}/Pictures/profile.jpg'
+    line: 'Icon=/home/{{ user }}/Pictures/profile.png'
   when: is_icon.rc == 0
-
-- name: DEBUG - lendo o arquivo 2
-  shell: cat /var/lib/AccountsService/users/{{ user }}
-  register: debug_temp
-
-- name: DEBUG - verify file
-  debug:
-    msg: "{{ debug_temp }}"
