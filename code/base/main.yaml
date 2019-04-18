@@ -75,21 +75,17 @@
         - tar
         - nano
         - chrome-gnome-shell
+        - xclip
+
+    # ============================================
+    # Instalando o Visual Studio Code
+    # ============================================
+    - import_tasks: vs_code_install.yaml
 
     # ============================================
     # Instalando o Spotify
     # ============================================
     - import_tasks: spotify_install.yaml
-
-    # ============================================
-    # Instalando o Libre Office
-    # ============================================
-    - import_tasks: libreoffice_install.yaml
-
-    # ============================================
-    # Instalando o Transmission
-    # ============================================
-    - import_tasks: transmission_install.yaml
 
     # ===========================================
     # Instalando o Dropbox
@@ -103,14 +99,6 @@
     # ============================================
     - include_tasks: albert_install.yaml
 
-    # ============================================
-    # Instalando o Telegram Desktop
-    # ============================================
-    - include_tasks: telegram/telegram_install.yaml
-      vars:
-        telegram_folder: $HOME/bin/Telegram
-        user: "{{ username.stdout }}"
-
     # ===========================================
     # Instalando o Google Chrome
     # ===========================================
@@ -122,6 +110,12 @@
     - import_tasks: gnome_custom_install.yaml
       vars:
         user: "{{ username.stdout }}"
+
+    # ============================================
+    # Disable all extension first
+    # ============================================
+    - name: EXTENSION - Disable all extension first
+      shell: gsettings set org.gnome.shell enabled-extensions "[]"
 
     # ===========================================
     # Instalando a Extensão 'Hide Activities'

@@ -12,6 +12,8 @@
 # ============================================
 - name: EXTENSION - get uuid
   shell: unzip -c "/home/{{ user }}/Downloads/{{ filename }}" metadata.json | grep uuid | cut -d \" -f4
+  args:
+    warn: false
   register: uuid
 
 # ============================================
