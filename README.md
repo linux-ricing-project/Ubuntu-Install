@@ -34,13 +34,20 @@ TODO
 Make the initial config with `sudo apt upgrade && sudo apt dist-upgrade`
 ### 2. Install packages
 Install many packages. Basically the packages are:
-- Spotify
-- Visual Studio Code
-- Some tools like: git, vim, meld, curl, wget and others stuffs
-- Dropbox
-- Google Chrome
-- Terminator
-- Some dark themes and others Gnome customizations
+- Player: Spotify
+- IDE: Visual Studio Code
+- Browser: Google Chrome
+- Terminal: Terminator
+- Some tools like: 
+  - Dropbox
+  - git, git-extras, meld
+  - vim , nano
+  - curl, wget
+  - zip, bzip2, unzip... and other extract packages
+  - gnome_tweak-tool
+  - neofetch
+  - imagemagick
+  - and others stuffs
 
 ### 3. Clean dependencies
 Clean packages with `sudo apt -f -y install` to fix broken packages and `sudo apt-get autoremove && sudo apt-get clean` to clean.
