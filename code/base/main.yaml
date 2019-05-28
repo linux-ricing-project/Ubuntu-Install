@@ -55,6 +55,7 @@
         - git-extras
         - meld
         - jq
+        - bat
         - vim
         - gdebi-core
         - gnome-tweak-tool
@@ -91,6 +92,13 @@
     # Instalando o Dropbox
     # ===========================================
     - include_tasks: dropbox/dropbox_install.yaml
+      vars:
+        user: "{{ username.stdout }}"
+
+    # ===========================================
+    # Instalando o Docker
+    # ===========================================
+    - include_tasks: docker_install.yaml
       vars:
         user: "{{ username.stdout }}"
 
