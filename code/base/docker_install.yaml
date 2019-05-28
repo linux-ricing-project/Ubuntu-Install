@@ -4,6 +4,8 @@
 
 ---
 - name: "DOCKER - Add Docker GPG key"
+  become: true
+  become_method: sudo
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
@@ -13,6 +15,8 @@
   register: lsb_release
 
 - name: "APT - Add Docker repository"
+  become: true
+  become_method: sudo
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ lsb_release.stdout_lines }} stable"
     state: present
