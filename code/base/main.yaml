@@ -55,7 +55,6 @@
         - git-extras
         - meld
         - jq
-        - bat
         - vim
         - gdebi-core
         - gnome-tweak-tool
