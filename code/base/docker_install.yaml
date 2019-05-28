@@ -18,7 +18,7 @@
   become: true
   become_method: sudo
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ lsb_release.stdout_lines }} stable"
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ lsb_release.stdout_lines[0] }} stable"
     state: present
     filename: docker
     
