@@ -76,6 +76,7 @@
         - nano
         - chrome-gnome-shell
         - xclip
+        - ffmpeg
 
     # ============================================
     # Instalando o Visual Studio Code
