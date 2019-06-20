@@ -24,10 +24,6 @@ This installation contains a principal packages and only kind of intallattion tr
 
 This installation contains others kind of packages not so importants to initial setup (ex. Telegram, LibreOffice and Transmission)
 
-> 3. Development
-
-TODO
-
 ## Base Installation
 
 ### 1. Initial Upgrade
@@ -39,7 +35,8 @@ Install many packages. Basically the packages are:
 - Browser: Google Chrome
 - Terminal: Terminator
 - Some tools like: 
-  - Dropbox
+  - dropbox
+  - docker
   - git, git-extras, meld
   - vim , nano
   - curl, wget
@@ -59,33 +56,3 @@ Download my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles), but
 wget -O - https://git.io/fjqyx | bash
 ```
 This shorten link ``https://git.io/fjqyx`` is pointed to ``https://raw.githubusercontent.com/frankjuniorr/ubuntu_install/master/code/trigger.sh``
-
-# Screenshots after installation
-
-#### Theme:
-
-- [Adapta GTK Theme](https://github.com/adapta-project/adapta-gtk-theme)
-- [Korla Icon Theme](https://github.com/bikass/korla)
-
-#### Extensions:
-
-- [Hide Activities](https://extensions.gnome.org/extension/1128/hide-activities-button/)
-- [Move Clock](https://extensions.gnome.org/extension/2/move-clock/)
-- [OpenWeather](https://extensions.gnome.org/extension/750/openweather/)
-
-
-### Desktop:
-
-<img alt="Icon" src="screenshot/screenshot_desktop.png?raw=true" align="center" hspace="1" vspace="1">
-
-### Lock Screen:
-
-* The image is same wallpaper, but is blur
-
-<img alt="Icon" src="screenshot/screenshot_lockscreen.png?raw=true" align="center" hspace="1" vspace="1">
-
-### Login Screen:
-
-* The ``ubuntu_install`` set my user profile picture too =D
-
-<img alt="Icon" src="screenshot/screenshot_login.png?raw=true" align="center" hspace="1" vspace="1">

@@ -31,7 +31,6 @@
       with_items:
         - "~/Templates"
         - "~/Public"
-        - "~/examples.desktop"
 
     # ============================================
     # Criando o diretório de autostart
@@ -76,6 +75,7 @@
         - nano
         - chrome-gnome-shell
         - xclip
+        - ffmpeg
 
     # ============================================
     # Instalando o Visual Studio Code
@@ -107,51 +107,42 @@
     - include_tasks: google_chrome_install.yaml
 
     # ============================================
-    # Instalando os Themes
+    # set profile picture
     # ============================================
-    - import_tasks: gnome_custom_install.yaml
-      vars:
-        user: "{{ username.stdout }}"
 
-    # ============================================
-    # Disable all extension first
-    # ============================================
-    - name: EXTENSION - Disable all extension first
-      shell: gsettings set org.gnome.shell enabled-extensions "[]"
+    # verify if exist line 'Icon=' in file
+    - name: THEME - Verify the user profile picture
+      shell: grep -q "^Icon=" /var/lib/AccountsService/users/{{ username }}
+      check_mode: no
+      register: is_icon
+      failed_when: false
+      no_log: True
+      changed_when: no
 
-    # ===========================================
-    # Instalando a Extensão 'Hide Activities'
-    # ===========================================
-    - include_tasks: gnome_extensions.yaml
-      vars:
-        url: https://extensions.gnome.org/extension-data/hide-activities-button%40gnome-shell-extensions.bookmarkd.xyz.v1.shell-extension.zip
-        filename: hide_activities_extension.zip
-        user: "{{ username.stdout }}"
+    # if line don't exist, add a new line
+    - name: THEME - Add user profile picture
+      become: true
+      become_method: sudo
+      lineinfile:
+        path: /var/lib/AccountsService/users/{{ username }}
+        regexp: '^Icon='
+        insertafter: '^Background='
+        line: 'Icon=/home/{{ username }}/Pictures/profile.png'
+      when: is_icon.rc == 1
 
-    # ===========================================
-    # Instalando a Extensão 'Move Clock'
-    # ===========================================
-    - include_tasks: gnome_extensions.yaml
-      vars:
-        url: https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v19.shell-extension.zip
-        filename: clock_extension.zip
-        home_folder: "{{ ansible_env.HOME }}"
-        user: "{{ username.stdout }}"
-
-    # ===========================================
-    # Instalando a Extensão 'Open Weather'
-    # ===========================================
-    - include_tasks: gnome_extensions.yaml
-      vars:
-        url: https://extensions.gnome.org/extension-data/openweather-extension%40jenslody.de.v97.shell-extension.zip
-        filename: open_weather.zip
-        home_folder: "{{ ansible_env.HOME }}"
-        user: "{{ username.stdout }}"
+    # if line exist, replace with new value
+    - name: THEME - Change user profile picture
+      become: true
+      become_method: sudo
+      lineinfile:
+        path: /var/lib/AccountsService/users/{{ username }}
+        regexp: '^Icon='
+        line: 'Icon=/home/{{ username }}/Pictures/profile.png'
+      when: is_icon.rc == 0
 
     # ===========================================
     # Clean Dependencies
     # ===========================================
-
     # pra consertar possíveis dependencias e pacotes quebrados
     - name: CLEAN - Fix broken packages
       become: true

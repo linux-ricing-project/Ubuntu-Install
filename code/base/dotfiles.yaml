@@ -4,7 +4,7 @@
   # ============================================
   - name: DOTFILES - Download
     get_url:
-      url: "https://github.com/frankjuniorr/dotfiles/archive/master.zip"
+      url: "https://github.com/linux-ricing-project/dotfiles/archive/master.zip"
       dest: "/home/{{ user }}/dotfiles.zip"
 
   # ============================================
