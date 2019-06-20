@@ -6,5 +6,5 @@ workflow "Deploy Release" {
 action "Github Create Release" {
   uses = "frankjuniorr/github-create-release-action@master"
   secrets = ["GITHUB_TOKEN"]
-  env = {VERSION  = "1.1"}
+  env = {VERSION  = "2.0"}
 }
