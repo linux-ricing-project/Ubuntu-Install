@@ -116,7 +116,7 @@
       check_mode: no
       register: is_icon
       failed_when: false
-      no_log: True
+      # no_log: True
       changed_when: no
 
     # if line don't exist, add a new line
