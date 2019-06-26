@@ -107,6 +107,14 @@
     - include_tasks: google_chrome_install.yaml
 
     # ============================================
+    # Copy the profile picture to $HOME/Pictures
+    # ============================================
+    - name: THEME - Copy user profile picture
+      copy: 
+        src: files/profile.png
+        dest: /home/{{ user }}/Pictures/profile.png
+
+    # ============================================
     # set profile picture
     # ============================================
 
