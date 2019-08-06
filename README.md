@@ -17,7 +17,7 @@ Install the first packages and make my initial configs in a Ubuntu post-installa
   </br>
 </p>
 
-*PS: In case of Ubuntu 19.04, is necessary change the update server in "Software Updater" to "Main Server", before run script. See the image below:*
+**PS: In case of Ubuntu 19.04, is necessary change the update server in "Software Updater" to "Main Server", before run script. See the image below:**
 
 The project is divided in 2 parts
 
