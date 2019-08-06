@@ -7,7 +7,7 @@
 
 ubuntu install
 ===========
-[![environment](https://img.shields.io/badge/linux-ubuntu_18.04-E95420.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-E95420.svg) [![environment](https://img.shields.io/badge/linux-ubuntu_19.04-77216F.svg)](https://img.shields.io/badge/linux-ubuntu_19.04-77216F.svg) [![environment](https://img.shields.io/badge/language-ansible-2196F3.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg) [![environment](https://img.shields.io/badge/language-shell-43A047.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg)
+[![environment](https://img.shields.io/badge/ubuntu-18.04-E95420.svg)](https://img.shields.io/badge/ubuntu-18.04-E95420.svg) [![environment](https://img.shields.io/badge/ubuntu-19.04-77216F.svg)](https://img.shields.io/badge/ubuntu-19.04-77216F.svg) [![environment](https://img.shields.io/badge/language-ansible-2196F3.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg) [![environment](https://img.shields.io/badge/language-shell-43A047.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg)
 
 ## Description
 Install the first packages and make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 18.04 or 19.04 with "Minimal Installation" option selected.
