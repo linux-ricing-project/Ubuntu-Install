@@ -4,8 +4,9 @@
 
 ---
 - name: "DOCKER - Check if Docker is installed"
-  package_facts:
-    manager: "auto"
+  shell: which google-chrome > /dev/null
+  register: is_installed
+  ignore_errors: True
 
 - name: "DOCKER - Add Docker GPG key"
   become: true
@@ -13,12 +14,12 @@
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
-  when: "'docker' not in ansible_facts.packages"
+  when: is_installed.failed
 
 - name: "DOCKER - get SO release"
   shell: "cat /etc/lsb-release | grep 'DISTRIB_CODENAME' | cut -d '=' -f2"
   register: lsb_release
-  when: "'docker' not in ansible_facts.packages"
+  when: is_installed.failed
 
 - name: "APT - Add Docker repository"
   become: true
@@ -27,7 +28,7 @@
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ lsb_release.stdout_lines[0] }} stable"
     state: present
     filename: docker
-  when: "'docker' not in ansible_facts.packages"
+  when: is_installed.failed
     
 - name: DOCKER - Install dependencies
   become: true
@@ -41,7 +42,7 @@
     - curl
     - gnupg-agent
     - software-properties-common
-  when: "'docker' not in ansible_facts.packages"
+  when: is_installed.failed
 
 - name: DOCKER - Install
   become: true
@@ -53,10 +54,10 @@
     - docker-ce
     - docker-ce-cli
     - containerd.io
-  when: "'docker' not in ansible_facts.packages"
+  when: is_installed.failed
 
 - name: DOCKER - Install
   become: true
   become_method: sudo
   shell: usermod -aG docker {{ user }}
-  when: "'docker' not in ansible_facts.packages"
+  when: is_installed.failed
