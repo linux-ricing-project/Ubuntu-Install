@@ -10,11 +10,11 @@ ubuntu install
 [![environment](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg) [![environment](https://img.shields.io/badge/language-ansible-2196F3.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg) [![environment](https://img.shields.io/badge/language-shell-43A047.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg)
 
 ## Description
-Install my firsts packages and make initial configs in a Ubuntu formatted. Its recommended Ubuntu 18.04 Minimal Installation.
+Install my firsts packages and make initial configs in a Ubuntu formatted. Its recommended Ubuntu 18.04 with "Minimal Installation" option selected.
 
 OBS: The most of the installation is done by [Ansible](https://github.com/ansible/ansible)
 
-The installation is divided in 3 parts
+The project is divided in 2 parts
 
 > 1. Base
 
