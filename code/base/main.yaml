@@ -58,7 +58,6 @@
         - gdebi-core
         - gnome-tweak-tool
         - python-pip
-        - browser-plugin-vlc
         - lame
         - sound-juicer
         - imagemagick
