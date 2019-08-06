@@ -112,7 +112,7 @@
     - name: THEME - Copy user profile picture
       copy: 
         src: files/profile.png
-        dest: /home/{{ username }}/Pictures/profile.png
+        dest: /home/{{ username.stdout }}/Pictures/profile.png
 
     # ============================================
     # set profile picture
@@ -120,7 +120,7 @@
 
     # verify if exist line 'Icon=' in file
     - name: THEME - Verify the user profile picture
-      shell: grep -q "^Icon=" /var/lib/AccountsService/users/{{ username }}
+      shell: grep -q "^Icon=" /var/lib/AccountsService/users/{{ username.stdout }}
       check_mode: no
       register: is_icon
       failed_when: false
@@ -132,10 +132,10 @@
       become: true
       become_method: sudo
       lineinfile:
-        path: /var/lib/AccountsService/users/{{ username }}
+        path: /var/lib/AccountsService/users/{{ username.stdout }}
         regexp: '^Icon='
         insertafter: '^Background='
-        line: 'Icon=/home/{{ username }}/Pictures/profile.png'
+        line: 'Icon=/home/{{ username.stdout }}/Pictures/profile.png'
       when: is_icon.rc == 1
 
     # if line exist, replace with new value
@@ -143,9 +143,9 @@
       become: true
       become_method: sudo
       lineinfile:
-        path: /var/lib/AccountsService/users/{{ username }}
+        path: /var/lib/AccountsService/users/{{ username.stdout }}
         regexp: '^Icon='
-        line: 'Icon=/home/{{ username }}/Pictures/profile.png'
+        line: 'Icon=/home/{{ username.stdout }}/Pictures/profile.png'
       when: is_icon.rc == 0
 
     # ===========================================
