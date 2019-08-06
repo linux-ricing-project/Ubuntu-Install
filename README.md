@@ -7,12 +7,17 @@
 
 ubuntu install
 ===========
-[![environment](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-orange.svg) [![environment](https://img.shields.io/badge/language-ansible-2196F3.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg) [![environment](https://img.shields.io/badge/language-shell-43A047.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg)
+[![environment](https://img.shields.io/badge/linux-ubuntu_18.04-E95420.svg)](https://img.shields.io/badge/linux-ubuntu_18.04-E95420.svg) [![environment](https://img.shields.io/badge/linux-ubuntu_19.04-77216F.svg)](https://img.shields.io/badge/linux-ubuntu_19.04-77216F.svg) [![environment](https://img.shields.io/badge/language-ansible-2196F3.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg) [![environment](https://img.shields.io/badge/language-shell-43A047.svg)](https://img.shields.io/badge/tool-ansible-2196F3.svg)
 
 ## Description
-Install my firsts packages and make initial configs in a Ubuntu formatted. Its recommended Ubuntu 18.04 with "Minimal Installation" option selected.
+Install the first packages and make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 18.04 or 19.04 with "Minimal Installation" option selected.
 
-OBS: The most of the installation is done by [Ansible](https://github.com/ansible/ansible)
+<p align="center">
+  <img src="screenshots/minimal_installation.png" alt="ubuntu_install">
+  </br>
+</p>
+
+*PS: In case of Ubuntu 19.04, is necessary change the update server in "Software Updater" to "Main Server", before run script. See the image below:*
 
 The project is divided in 2 parts
 
@@ -50,6 +55,11 @@ Install many packages. Basically the packages are:
 Clean packages with `sudo apt -f -y install` to fix broken packages and `sudo apt-get autoremove && sudo apt-get clean` to clean.
 ### 4. Download my dotfiles
 Download my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles), but not install, only download. Because of my dotfiles installation is necessary the user interation.
+### 5. Change GDM profile picture
+<p align="center">
+  <img src="screenshots/gdm_profile_picture.png" alt="ubuntu_install">
+  </br>
+</p>
 
 ## Install without git in a Ubuntu formatted
 ```bash
