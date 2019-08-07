@@ -7,10 +7,7 @@
 - name: SPOTIFY - Add signing keys
   become: true
   become_method: sudo
-  apt_key: 
-    keyserver: hkp://keyserver.ubuntu.com:80
-    id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-    state: present
+  shell: curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
 - name: SPOTIFY - Add repositories keys
   become: true
