@@ -29,6 +29,12 @@
     state: present
     filename: docker
   when: is_installed.failed
+
+- name: DOCKER Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
     
 - name: DOCKER - Install dependencies
   become: true

@@ -24,6 +24,12 @@
     filename: vscode
     state: present
 
+- name: VS CODE Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+
 - name: VS CODE - install
   become: yes
   apt:

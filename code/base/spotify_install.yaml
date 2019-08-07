@@ -17,6 +17,12 @@
     state: present
     filename: spotify
 
+- name: SPOTIFY Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+
 - name: SPOTIFY - installing
   become: yes
   apt:
