@@ -4,7 +4,7 @@
 
 ---
 - name: "DOCKER - Check if Docker is installed"
-  shell: which google-chrome > /dev/null
+  shell: which docker > /dev/null
   register: is_installed
   ignore_errors: True
 
