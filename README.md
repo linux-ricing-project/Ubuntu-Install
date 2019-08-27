@@ -1,6 +1,3 @@
-ubuntu install
-===========
-
 <p align="center">
   <img src="logo/1024px.png" alt="ubuntu_install" height="200px">
   </br>
@@ -36,16 +33,16 @@ The project is divided in 2 parts
 
 > 1. Base
 
-This installation contains a principal packages and only kind of intallattion triggered by [``trigger.sh``](https://raw.githubusercontent.com/frankjuniorr/ubuntu_install/master/code/trigger.sh)
+This installation contains a principal packages installations and is triggered by [``trigger.sh``](https://raw.githubusercontent.com/frankjuniorr/ubuntu_install/master/code/trigger.sh)
 
 > 2. Optional
 
 This installation contains others kind of packages not so importants to initial setup (ex. Telegram, LibreOffice and Transmission)
 
-## Base Installation
+## Base Installation (steps)
 
 ### 1. Initial Upgrade
-Make the initial config with `sudo apt upgrade && sudo apt dist-upgrade`
+The script make the initial config with `sudo apt upgrade && sudo apt dist-upgrade`
 ### 2. Install packages
 Install many packages. Basically the packages are:
 - Player: Spotify
