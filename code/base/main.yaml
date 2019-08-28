@@ -55,10 +55,11 @@
         - meld
         - jq
         - vim
+        - nano
         - gdebi-core
         - gnome-tweak-tool
         - python-pip
-        - lame
+        - gnome-sushi
         - sound-juicer
         - imagemagick
         - ubuntu-restricted-extras
@@ -71,7 +72,6 @@
         - unzip
         - bzip2
         - tar
-        - nano
         - chrome-gnome-shell
         - xclip
         - ffmpeg
