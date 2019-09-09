@@ -1,23 +1,29 @@
 ---
-# ============================================
-# adicionando repositórios do LibreOffice
-# ============================================
-- name: LIBREOFFICE - Add repositories
-  become: true
-  become_method: sudo
-  apt_repository:
-    repo: "ppa:libreoffice/ppa"
-    filename: "libreoffice"
+- name: Ubuntu Install - LibreOffice
+  hosts: localhost
+  connection: local
+  gather_facts: false
 
-# ============================================
-# Instalando o Libre Office
-# ============================================
-- name: LIBREOFFICE - installing
-  become: yes
-  apt:
-    name: "{{ packages }}"
-    state: present
-  vars:
-    packages:
-      - libreoffice-gtk2
-      - libreoffice-gnome
+  tasks:
+    # ============================================
+    # adicionando repositórios do LibreOffice
+    # ============================================
+    - name: LIBREOFFICE - Add repositories
+      become: true
+      become_method: sudo
+      apt_repository:
+        repo: "ppa:libreoffice/ppa"
+        filename: "libreoffice"
+
+    # ============================================
+    # Instalando o Libre Office
+    # ============================================
+    - name: LIBREOFFICE - installing
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - libreoffice-gtk2
+          - libreoffice-gnome

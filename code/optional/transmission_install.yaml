@@ -1,19 +1,25 @@
 ---
-# ============================================
-# adicionando repositórios do Transmission
-# ============================================
-- name: TRANSMISSION - Add repositories
-  become: true
-  become_method: sudo
-  apt_repository:
-    repo: "ppa:transmissionbt/ppa"
-    filename: "transmission"
+- name: Ubuntu Install - Transmission
+  hosts: localhost
+  connection: local
+  gather_facts: false
 
-# ============================================
-# Instalando o Transmission
-# ============================================
-- name: TRANSMISSION - installing
-  become: yes
-  apt:
-    name: "transmission"
-    state: present
+  tasks:
+    # ============================================
+    # adicionando repositórios do Transmission
+    # ============================================
+    - name: TRANSMISSION - Add repositories
+      become: true
+      become_method: sudo
+      apt_repository:
+        repo: "ppa:transmissionbt/ppa"
+        filename: "transmission"
+
+    # ============================================
+    # Instalando o Transmission
+    # ============================================
+    - name: TRANSMISSION - installing
+      become: yes
+      apt:
+        name: "transmission"
+        state: present
