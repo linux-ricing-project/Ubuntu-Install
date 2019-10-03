@@ -1,29 +1,53 @@
 #!/bin/bash
 
+function info_dialog(){
+  local message="$1"
+
+  zenity --title "Ubuntu Install" --info \
+          --text="$message" \
+          --width=200
+}
+
 function install_options(){
   local options="$*"
+  # em shell script, o zero é sucesso, e 1 é false.
+  local result="error"
 
+  local mySudoPassword=$(zenity --password --title="Ubuntu Install")
+  if [ -z "$mySudoPassword" ];then
+    echo "user password is blank"
+    unset mySudoPassword
+    exit 1
+  fi
 
   for package in $options;do
     case "$package" in
       "LibreOffice")
-        ansible-playbook libreoffice_install.yaml
+        ansible-playbook --user=$USER --extra-vars "ansible_sudo_pass=$mySudoPassword" libreoffice_install.yaml
+        test $? == "0" && result="success" || result="error"
       ;;
       "Transmission")
-        ansible-playbook transmission_install.yaml
+        ansible-playbook --user=$USER --extra-vars "ansible_sudo_pass=$mySudoPassword" transmission_install.yaml
+        test $? == "0" && result="success" || result="error"
       ;;
       "Postman")
         echo "Postman installation..."
         sleep 3
       ;;
       "Telegram")
-        ansible-playbook telegram/telegram_install.yaml
+        ansible-playbook --user=$USER --extra-vars "ansible_sudo_pass=$mySudoPassword" telegram/telegram_install.yaml
+        test $? == "0" && result="success" || result="error"
       ;;
     esac
+
+    unset mySudoPassword
   done
 
-  zenity --title "Ubuntu Install" --info \
-          --text="Packages installed with success"
+  if [ "$result" == "success" ];then
+    info_dialog "Packages installed with success"
+  else
+    info_dialog "the installation was failed"
+  fi
 }
 
 packages_array=()
@@ -51,8 +75,7 @@ fi
 # se o array estiver vazio, significa dizer que todos os
 # pacotes disponíveis já estão instalados.
 if [ ${#packages_array[@]} -eq 0 ]; then
-    zenity --title "Ubuntu Install" --info \
-          --text="All the avaliable packages already installed"
+    info_dialog "All the avaliable packages already installed"
     exit 0
 fi
 
