@@ -46,7 +46,8 @@ if __name__ == '__main__':
   echo "movendo o arquivo"
   echo "$pip_fix" > pip_fix.py
   sudo cp "pip_fix.py" "/usr/bin/pip3"
-  # rm -rf "pip_fix.py"
+  sudo chmod 777 "/usr/bin/pip3"
+  rm -rf "pip_fix.py"
 
   echo "versão do pip"
   # essa linha só serve pra debug mesmo, pra garantir que a instalação do pip foi ok.
