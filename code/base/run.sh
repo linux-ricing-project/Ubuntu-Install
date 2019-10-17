@@ -32,12 +32,12 @@ ansible_install(){
   #     python3-distutils \
   #     python3-testresources
 
-  local pip_fix="
-#!/usr/bin/python3
+  local pip_fix="#!/usr/bin/python3
 
 from pip import __main__
+
 if __name__ == '__main__':
-    sys.exit(__main__._main())
+  sys.exit(__main__._main())
 "
 
   echo "deletando o arquivo"
