@@ -21,6 +21,34 @@ HEADER
 }
 
 # ============================================
+# Instalação do Ansible via Pip.
+# A versão que ta no apt-get ta desatualizada pra variar ¬¬
+# ============================================
+ansible_install(){
+  sudo apt -y install software-properties-common \
+      curl \
+      wget \
+      python3-pip \
+      python3-distutils \
+      python3-testresources
+
+  read -r -d '' pip_fix <<-"EOT"
+    from pip import __main__
+    if __name__ == '__main__':
+        sys.exit(__main__._main())
+EOT
+
+  echo "deletando o arquivo"
+  sudo rm -rf "/usr/bin/pip3"
+  echo "movendo o arquivo"
+  sudo cp "$pip_fix" "/usr/bin/pip3"
+
+  echo "versão do pip"
+  # essa linha só serve pra debug mesmo, pra garantir que a instalação do pip foi ok.
+  pip3 --version
+}
+
+# ============================================
 # Fazendo as atualizações iniciais
 # ============================================
 init_updates(){
@@ -39,28 +67,27 @@ init_updates(){
     echo "==========================================="
     echo "Installing Ansible..."
     echo "==========================================="
-    sudo apt -y install software-properties-common
-    sudo apt-add-repository --yes --update ppa:ansible/ansible
-    sudo apt -y install ansible curl wget
+
+    ansible_install
   fi
 }
 
 show_header
 init_updates
 
-echo "==========================================="
-echo "Running Ansible Job"
-echo "==========================================="
-ansible-playbook --ask-become-pass main.yaml
+# echo "==========================================="
+# echo "Running Ansible Job"
+# echo "==========================================="
+# ansible-playbook --ask-become-pass main.yaml
 
-clear
-echo "==========================================="
-echo "The dotfiles directory is in your HOME"
-echo "If you wish install now, execute:"
-echo "cd ~/dotfiles-master"
-echo "./install_dotfiles.sh"
-echo
-echo "OK"
-echo "Everything is installed."
-echo "Is recommended restart the machine now"
-echo "==========================================="
+# clear
+# echo "==========================================="
+# echo "The dotfiles directory is in your HOME"
+# echo "If you wish install now, execute:"
+# echo "cd ~/dotfiles-master"
+# echo "./install_dotfiles.sh"
+# echo
+# echo "OK"
+# echo "Everything is installed."
+# echo "Is recommended restart the machine now"
+# echo "==========================================="
