@@ -32,11 +32,13 @@ ansible_install(){
   #     python3-distutils \
   #     python3-testresources
 
-  read -r -d '' pip_fix << "EOT"
-    from pip import __main__
-    if __name__ == '__main__':
-        sys.exit(__main__._main())
-EOT
+  local pip_fix="
+#!/usr/bin/python3
+
+from pip import __main__
+if __name__ == '__main__':
+    sys.exit(__main__._main())
+"
 
   echo "deletando o arquivo"
   sudo rm -rf "/usr/bin/pip3"
