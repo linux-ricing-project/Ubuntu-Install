@@ -25,12 +25,12 @@ HEADER
 # A versão que ta no apt-get ta desatualizada pra variar ¬¬
 # ============================================
 ansible_install(){
-  sudo apt -y install software-properties-common \
-      curl \
-      wget \
-      python3-pip \
-      python3-distutils \
-      python3-testresources
+  # sudo apt -y install software-properties-common \
+  #     curl \
+  #     wget \
+  #     python3-pip \
+  #     python3-distutils \
+  #     python3-testresources
 
   read -r -d '' pip_fix <<-"EOT"
     from pip import __main__
@@ -56,9 +56,9 @@ init_updates(){
   echo "==========================================="
   echo "Do the initial upgrades..."
   echo "==========================================="
-  sudo apt -y upgrade
-  sudo apt -y dist-upgrade
-  sudo apt -y full-upgrade
+  # sudo apt -y upgrade
+  # sudo apt -y dist-upgrade
+  # sudo apt -y full-upgrade
 
   # ============================================
   # Instalando o Ansible
