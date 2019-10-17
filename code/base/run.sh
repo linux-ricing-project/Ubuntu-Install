@@ -32,7 +32,7 @@ ansible_install(){
   #     python3-distutils \
   #     python3-testresources
 
-  read -r -d '' pip_fix <<-"EOT"
+  read -r -d '' pip_fix << "EOT"
     from pip import __main__
     if __name__ == '__main__':
         sys.exit(__main__._main())
