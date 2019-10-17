@@ -43,7 +43,7 @@ if __name__ == '__main__':
   echo "deletando o arquivo"
   sudo rm -rf "/usr/bin/pip3"
   echo "movendo o arquivo"
-  cat "$pip_fix" > pip_fix.py
+  echo "$pip_fix" > pip_fix.py
   sudo cp "pip_fix.py" "/usr/bin/pip3"
   rm -rf "pip_fix.py"
 
