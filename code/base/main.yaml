@@ -110,7 +110,7 @@
     # Copy the profile picture to $HOME/Pictures
     # ============================================
     - name: THEME - Copy user profile picture
-      copy: 
+      copy:
         src: files/profile.png
         dest: /home/{{ username.stdout }}/Pictures/profile.png
 
@@ -134,7 +134,6 @@
       lineinfile:
         path: /var/lib/AccountsService/users/{{ username.stdout }}
         regexp: '^Icon='
-        insertafter: '^Background='
         line: 'Icon=/home/{{ username.stdout }}/Pictures/profile.png'
       when: is_icon.rc == 1
 

@@ -82,19 +82,19 @@ init(){
 show_header
 init
 
-# echo "==========================================="
-# echo "Running Ansible Job"
-# echo "==========================================="
-# ansible-playbook --ask-become-pass main.yaml
+echo "==========================================="
+echo "Running Ansible Job"
+echo "==========================================="
+ansible-playbook --ask-become-pass main.yaml
 
-# clear
-# echo "==========================================="
-# echo "The dotfiles directory is in your HOME"
-# echo "If you wish install now, execute:"
-# echo "cd ~/dotfiles-master"
-# echo "./install_dotfiles.sh"
-# echo
-# echo "OK"
-# echo "Everything is installed."
-# echo "Is recommended restart the machine now"
-# echo "==========================================="
+clear
+echo "==========================================="
+echo "The dotfiles directory is in your HOME"
+echo "If you wish install now, execute:"
+echo "cd ~/dotfiles-master"
+echo "./install_dotfiles.sh"
+echo
+echo "OK"
+echo "Everything is installed."
+echo "Is recommended restart the machine now"
+echo "==========================================="
