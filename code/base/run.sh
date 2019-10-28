@@ -25,46 +25,47 @@ HEADER
 # A versão que ta no apt-get ta desatualizada pra variar ¬¬
 # ============================================
 ansible_install(){
-  # sudo apt -y install software-properties-common \
-  #     curl \
-  #     wget \
-  #     python3-pip \
-  #     python3-distutils \
-  #     python3-testresources
+  sudo apt -y install software-properties-common \
+      curl \
+      wget \
+      python3-distutils \
+      python3-testresources
 
-  local pip_fix="#!/usr/bin/python3
+  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  python3 get-pip.py --user
 
-from pip import __main__
+  source ~/.profile
+  rm -rf get-pip.py
 
-if __name__ == '__main__':
-  sys.exit(__main__._main())
-"
-
-  echo "deletando o arquivo"
-  sudo rm -rf "/usr/bin/pip3"
-
-  echo "movendo o arquivo"
-  echo "$pip_fix" > pip_fix.py
-  sudo cp "pip_fix.py" "/usr/bin/pip3"
-  sudo chmod 777 "/usr/bin/pip3"
-  rm -rf "pip_fix.py"
-
-  echo "versão do pip"
   # essa linha só serve pra debug mesmo, pra garantir que a instalação do pip foi ok.
   pip3 --version
+
+  pip3 install --user ansible
+  ansible --version
 }
 
 # ============================================
 # Fazendo as atualizações iniciais
 # ============================================
-init_updates(){
-  # updagrade inicial, por volta de uns 300 MB
+system_update(){
   echo "==========================================="
   echo "Do the initial upgrades..."
   echo "==========================================="
-  # sudo apt -y upgrade
-  # sudo apt -y dist-upgrade
-  # sudo apt -y full-upgrade
+
+  # Isso aqui resolve a frescura do apt-get que já começa bugado com um arquivo de lock ¬¬
+  test -f /var/lib/apt/lists/lock && sudo rm -rf /var/lib/apt/lists/lock
+  test -f /var/cache/apt/archives/lock && sudo rm -rf /var/cache/apt/archives/lock
+  test -f /var/lib/dpkg/lock && sudo rm -rf /var/lib/dpkg/lock
+  test -f /var/lib/dpkg/lock-frontend && sudo rm -rf /var/lib/dpkg/lock-frontend
+
+  sudo apt -y upgrade
+  sudo apt -y dist-upgrade
+  sudo apt -y full-upgrade
+}
+
+init(){
+  # updagrade inicial, por volta de uns 300 MB
+  system_update
 
   # ============================================
   # Instalando o Ansible
@@ -79,7 +80,7 @@ init_updates(){
 }
 
 show_header
-init_updates
+init
 
 # echo "==========================================="
 # echo "Running Ansible Job"
