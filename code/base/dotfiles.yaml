@@ -24,18 +24,8 @@
       state: absent
     changed_when: no
 
-  - name: DEBUG
-    debug:
-      msg: "Nome = {{ git_name }} e Email = {{ git_email }}"
-
   # ============================================
   # Install Dotfiles
   # ============================================
   - name: DOTFILES - Install
     shell: "cd /home/{{ user }}/dotfiles-master && ./install_dotfiles.sh {{ git_name }} {{ git_email }}"
-
-  # ============================================
-  # Refresh Dotfiles
-  # ============================================
-  - name: DOTFILES - Refresh
-    shell: source /home/{{ user }}/.bashrc
