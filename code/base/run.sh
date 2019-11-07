@@ -89,12 +89,8 @@ ansible-playbook --ask-become-pass main.yaml
 
 clear
 echo "==========================================="
-echo "The dotfiles directory is in your HOME"
-echo "If you wish install now, execute:"
-echo "cd ~/dotfiles-master"
-echo "./install_dotfiles.sh"
-echo
 echo "OK"
+echo "The dotfiles directory is in your HOME"
 echo "Everything is installed."
 echo "Is recommended restart the machine now"
 echo "==========================================="
