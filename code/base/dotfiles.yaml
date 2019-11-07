@@ -18,8 +18,14 @@
   # ============================================
   # Install Dotfiles
   # ============================================
-  - name: DOTFILES - install
+  - name: DOTFILES - Install
     shell: cd /home/{{ user }}/dotfiles-master && ./install_dotfiles.sh {{ name }} {{ email }}
+
+  # ============================================
+  # Refresh Dotfiles
+  # ============================================
+  - name: DOTFILES - Refresh
+    shell: source ~/.bashrc
 
   # ============================================
   # Delete dotfiles zip
