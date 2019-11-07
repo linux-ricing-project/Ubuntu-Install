@@ -38,4 +38,4 @@
   # Refresh Dotfiles
   # ============================================
   - name: DOTFILES - Refresh
-    shell: source ~/.bashrc
+    shell: source /home/{{ user }}/.bashrc
