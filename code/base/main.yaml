@@ -4,14 +4,16 @@
   connection: local
   gather_facts: false
 
-  pre_tasks:
+  vars:
+    name: Frank
+    email: frankcbjunior@gmail.com
 
+  pre_tasks:
     - name: UTILS - get username
       shell: whoami
       register: username
 
   tasks:
-
     # ============================================
     # Criando o diretório $HOME/bin
     # ============================================
@@ -173,3 +175,5 @@
     - include_tasks: dotfiles.yaml
       vars:
         user: "{{ username.stdout }}"
+        name: "{{ name }}"
+        email: "{{ email }}"

@@ -16,6 +16,12 @@
       dest: "/home/{{ user }}"
 
   # ============================================
+  # Install Dotfiles
+  # ============================================
+  - name: DOTFILES - install
+    shell: cd /home/{{ user }}/dotfiles-master && ./install_dotfiles.sh {{ name }} {{ email }}
+
+  # ============================================
   # Delete dotfiles zip
   # ============================================
   - name: DOTFILES - delete zip
