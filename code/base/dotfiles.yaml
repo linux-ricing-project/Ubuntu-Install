@@ -17,13 +17,13 @@
 
   - name: DEBUG
     debug:
-      msg: "Nome = {{ name }} e Email = {{ email }}"
+      msg: "Nome = {{ git_name }} e Email = {{ git_email }}"
 
   # ============================================
   # Install Dotfiles
   # ============================================
   - name: DOTFILES - Install
-    shell: "cd /home/{{ user }}/dotfiles-master && ./install_dotfiles.sh {{ name }} {{ email }}"
+    shell: "cd /home/{{ user }}/dotfiles-master && ./install_dotfiles.sh {{ git_name }} {{ git_email }}"
 
   # ============================================
   # Refresh Dotfiles

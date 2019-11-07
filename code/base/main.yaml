@@ -5,8 +5,8 @@
   gather_facts: false
 
   vars:
-    name: Frank
-    email: frankcbjunior@gmail.com
+    git_name: Frank
+    git_email: frankcbjunior@gmail.com
 
   pre_tasks:
     - name: UTILS - get username
@@ -175,5 +175,5 @@
     - include_tasks: dotfiles.yaml
       vars:
         user: "{{ username.stdout }}"
-        name: "{{ name }}"
-        email: "{{ email }}"
+        git_name: "{{ git_name }}"
+        git_email: "{{ git_email }}"
