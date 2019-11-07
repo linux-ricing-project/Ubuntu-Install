@@ -15,6 +15,15 @@
       src: "/home/{{ user }}/dotfiles.zip"
       dest: "/home/{{ user }}"
 
+  # ============================================
+  # Delete dotfiles zip
+  # ============================================
+  - name: DOTFILES - delete zip
+    file:
+      path: "/home/{{ user }}/dotfiles.zip"
+      state: absent
+    changed_when: no
+
   - name: DEBUG
     debug:
       msg: "Nome = {{ git_name }} e Email = {{ git_email }}"
@@ -30,12 +39,3 @@
   # ============================================
   - name: DOTFILES - Refresh
     shell: source ~/.bashrc
-
-  # ============================================
-  # Delete dotfiles zip
-  # ============================================
-  - name: DOTFILES - delete zip
-    file:
-      path: "/home/{{ user }}/dotfiles.zip"
-      state: absent
-    changed_when: no
