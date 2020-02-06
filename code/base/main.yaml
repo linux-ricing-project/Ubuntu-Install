@@ -54,6 +54,7 @@
         packages:
         - git
         - git-extras
+        - net-tools
         - meld
         - jq
         - vim
