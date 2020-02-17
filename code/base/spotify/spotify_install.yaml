@@ -29,7 +29,13 @@
     name: spotify-client
     state: present
 
-# ===========================================
-# Customizando o Spotify
-# ===========================================
-- include_tasks: spotify_custom_install.yaml
+- name: SPOTIFY - Create $HOME/bin/spicetify directory
+  file:
+    path: $HOME/bin/spicetify
+    state: directory
+    mode: 0700
+
+- name: SPOTIFY - generate customize script
+  template:
+    src: "template_spotify_custom_install.sh.j2"
+    dest: "$HOME/bin/spicetify/spotify_custom_install.sh"
