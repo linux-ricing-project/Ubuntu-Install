@@ -28,3 +28,8 @@
   apt:
     name: spotify-client
     state: present
+
+# ===========================================
+# Customizando o Spotify
+# ===========================================
+- include_tasks: spotify_custom_install.yaml
