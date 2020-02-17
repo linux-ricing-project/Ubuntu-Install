@@ -88,13 +88,6 @@
     - import_tasks: spotify/spotify_install.yaml
 
     # ===========================================
-    # Customizando o Spotify
-    # ===========================================
-    - include_tasks: spotify/spotify_custom_install.yaml
-      vars:
-        spicetify_version: "0.9.7"
-
-    # ===========================================
     # Instalando o Dropbox
     # ===========================================
     - include_tasks: dropbox/dropbox_install.yaml

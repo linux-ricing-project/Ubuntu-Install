@@ -1,3 +1,22 @@
 #!/bin/bash
 
-echo "teste"
+spicetify_version="0.9.7"
+
+if [ ! -d $HOME/bin/spicetify ];then
+  mkdir $HOME/bin/spicetify
+fi
+
+cd $HOME/bin/spicetify
+wget "https://github.com/khanhas/spicetify-cli/releases/download/v${spicetify_version}/spicetify-${spicetify_version}-linux-amd64.tar.gz"
+
+tar xzf spicetify-${spicetify_version}-linux-amd64.tar.gz
+
+rm -rf spicetify-${spicetify_version}-linux-amd64.tar.gz
+
+sudo ln -s $HOME/bin/spicetify/spicetify /usr/bin/spicetify
+
+sudo chmod 777 /usr/share/spotify
+
+spicetify
+
+spicetify backup apply enable-devtool
