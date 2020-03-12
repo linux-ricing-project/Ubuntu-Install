@@ -9,6 +9,7 @@ set -e
 # ============================================
 # mostrar o banner inicial
 # ============================================
+# link: http://patorjk.com/software/taag/#p=display&c=bash&f=ANSI%20Shadow&t=Ubuntu%20Install
 show_header(){
 cat << "HEADER"
    __  ____                __           ____           __        ____
@@ -16,7 +17,7 @@ cat << "HEADER"
  / / / / __ \/ / / / __ \/ __/ / / /   / // __ \/ ___/ __/ __ `/ / /
 / /_/ / /_/ / /_/ / / / / /_/ /_/ /  _/ // / / (__  ) /_/ /_/ / / /
 \____/_.___/\__,_/_/ /_/\__/\__,_/  /___/_/ /_/____/\__/\__,_/_/_/
-
+                                        Developed by Frank Junior
 HEADER
 }
 
