@@ -10,16 +10,16 @@
   tasks:
     - name: TELEGRAM - create directory
       file:
-      path: "{{ telegram_folder }}"
-      state: directory
+        path: "{{ telegram_folder }}"
+        state: directory
 
     - name: "TELEGRAM - Download"
       get_url:
-      url: "{{ item }}"
-      dest: "{{ telegram_folder }}"
-      loop:
-        - https://telegram.org/dl/desktop/linux
-        - https://telegram.org/img/t_logo.png
+        url: "{{ item }}"
+        dest: "{{ telegram_folder }}"
+        loop:
+          - https://telegram.org/dl/desktop/linux
+          - https://telegram.org/img/t_logo.png
 
     - name: TELEGRAM - Find XZ file
       find:
