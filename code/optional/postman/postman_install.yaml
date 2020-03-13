@@ -1,0 +1,43 @@
+---
+- name: Ubuntu Install - Postman
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    postman_folder: $HOME/bin/Postman
+
+  tasks:
+
+    - name: POSTMAN - create directory
+      file:
+        path: "{{ postman_folder }}"
+        state: directory
+
+    - name: "POSTMAN - Download"
+      get_url:
+        url: " https://dl.pstmn.io/download/latest/linux64"
+        dest: "{{ postman_folder }}"
+
+    - name: POSTMAN - Find XZ file
+      find:
+        paths: "{{ postman_folder }}"
+        patterns: "*.tar.gz"
+      register: result_tar_gz
+
+    - name: POSTMAN - Extract file
+      shell: tar -xzf {{ result_xz.files[0].path }} -C "{{ postman_folder }}"
+      args:
+        warn: false
+
+    - name: POSTMAN - remove temporary files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - "{{ result_xz.files[0].path }}"
+
+    - name: POSTMAN - generate desktop file
+      template:
+        src: "postman.desktop.j2"
+        dest: "$HOME/.local/share/applications/postman.desktop"

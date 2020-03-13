@@ -19,9 +19,8 @@ function menu(){
   echo -e "\t\tPACKAGE MENU"
   echo "========================================================="
   echo " [1] Telegram"
-  echo " [2] LibreOffice"
-  echo " [3] Transmission"
-  echo " [4] Postman"
+  echo " [2] Transmission"
+  echo " [3] Postman"
   echo "========================================================="
   echo "[Choose a package you want to install]: "
 }
@@ -33,19 +32,15 @@ read opcao
 case "$opcao" in
   1)
     echo "Installing Telegram..."
-    ansible-playbook --ask-become-pass telegram/telegram_install.yaml
+    ansible-playbook telegram/telegram_install.yaml
   ;;
   2)
-    echo "Installing LibreOffice..."
-    ansible-playbook --ask-become-pass libreoffice_install.yaml
-  ;;
-  3)
     echo "Installing Transmission..."
     ansible-playbook --ask-become-pass transmission_install.yaml
   ;;
-  4)
+  3)
     echo "Installing Postman..."
-    echo "not implement yet"
+    ansible-playbook postman/postman_install.yaml
   ;;
   *)
     echo "Invalid Option"
