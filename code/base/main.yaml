@@ -66,6 +66,7 @@
         - nano
         - gdebi-core
         - gnome-tweak-tool
+        - nautilus-compare
         - gnome-sushi
         - imagemagick
         - ubuntu-restricted-extras
