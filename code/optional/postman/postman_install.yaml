@@ -19,7 +19,7 @@
         url: " https://dl.pstmn.io/download/latest/linux64"
         dest: "{{ postman_folder }}"
 
-    - name: POSTMAN - Find XZ file
+    - name: POSTMAN - Find TAr.GZ file
       find:
         paths: "{{ postman_folder }}"
         patterns: "*.tar.gz"
@@ -36,6 +36,14 @@
         state: absent
       with_items:
         - "{{ result_tar_gz.files[0].path }}"
+
+    - name: POSTMAN - get username
+      shell: whoami
+      register: username
+
+    - name: POSTMAN - set user
+      set_fact:
+        user: "{{ username }}"
 
     - name: POSTMAN - generate desktop file
       template:
