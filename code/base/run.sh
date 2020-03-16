@@ -86,7 +86,11 @@ init
 echo "==========================================="
 echo "Running Ansible Job"
 echo "==========================================="
-ansible-playbook --ask-become-pass main.yaml
+
+read -p "Enter Git username: " git_username
+read -p "Enter Git email: " git_email
+
+ansible-playbook --ask-become-pass --extra-vars "user_on_git=${git_username} email_on_git=${git_email}" main.yaml
 
 clear
 echo "==========================================="

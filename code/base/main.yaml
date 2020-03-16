@@ -4,15 +4,6 @@
   connection: local
   gather_facts: false
 
-  vars_prompt:
-    - name: user_on_git
-      prompt: "Enter Git username"
-      private: no
-
-    - name: email_on_git
-      prompt: "Enter Git email address"
-      private: no
-
   pre_tasks:
     - name: UTILS - get username
       shell: whoami

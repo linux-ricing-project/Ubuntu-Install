@@ -22,13 +22,12 @@ function menu(){
   echo " [2] Transmission"
   echo " [3] Postman"
   echo "========================================================="
-  echo "[Choose a package you want to install]: "
+  read -p "[Choose a package you want to install]: " opcao
 }
 
 clear
 menu
 
-read opcao
 case "$opcao" in
   1)
     echo "Installing Telegram..."
