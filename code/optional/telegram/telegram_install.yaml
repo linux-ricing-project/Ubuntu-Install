@@ -17,9 +17,9 @@
       get_url:
         url: "{{ item }}"
         dest: "{{ telegram_folder }}"
-        loop:
-          - https://telegram.org/dl/desktop/linux
-          - https://telegram.org/img/t_logo.png
+      loop:
+        - https://telegram.org/dl/desktop/linux
+        - https://telegram.org/img/t_logo.png
 
     - name: TELEGRAM - Find XZ file
       find:
@@ -48,6 +48,14 @@
       with_items:
         - "{{ result_xz.files[0].path }}"
         - "{{ result_png.files[0].path }}"
+
+    - name: TELEGRAM - get username
+      shell: whoami
+      register: username
+
+    - name: TELEGRAM - set user
+      set_fact:
+        user: "{{ username }}"
 
     - name: TELEGRAM - generate desktop file
       template:
