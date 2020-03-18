@@ -6,9 +6,9 @@ wget https://github.com/frankjuniorr/Ubuntu-Install/archive/master.zip -O ubuntu
 unzip ubuntu_install.zip
 rm -rf ubuntu_install.zip
 
-cd ubuntu_install-master/code/base
+cd Ubuntu-Install-master/code/base
 clear
 
 ./run.sh
 
-rm -rf "${root_location}/ubuntu_install-master"
+rm -rf "${root_location}/Ubuntu-Install-master"
