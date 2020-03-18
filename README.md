@@ -73,6 +73,6 @@ Download my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles), but
 
 ## Install without git in a Ubuntu formatted
 ```bash
-wget -O - https://git.io/fjqyx | bash
+wget -O - http://bit.ly/2vtw4Ge | bash
 ```
-This shorten link ``https://git.io/fjqyx`` is pointed to ``https://raw.githubusercontent.com/frankjuniorr/ubuntu_install/master/code/trigger.sh``
+This shorten link ``http://bit.ly/2vtw4Ge`` is pointed to ``https://raw.githubusercontent.com/frankjuniorr/Ubuntu-Install/master/code/trigger.sh``
