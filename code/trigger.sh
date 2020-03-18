@@ -2,7 +2,7 @@
 
 root_location=$(pwd)
 
-wget https://github.com/frankjuniorr/Ubuntu-Install/archive/master.zip -O ubuntu_install.zip
+wget https://github.com/linux-ricing-project/Ubuntu-Install/archive/master.zip -O ubuntu_install.zip
 unzip ubuntu_install.zip
 rm -rf ubuntu_install.zip
 
