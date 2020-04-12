@@ -72,7 +72,10 @@ Download my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles), but
 </p>
 
 ## Install without git in a Ubuntu formatted
+This is necessary because the script have a interactive mode on ansible moment.
 ```bash
-wget -O - http://bit.ly/2vtw4Ge | bash
+wget -O installer.sh http://bit.ly/2vtw4Ge
+chmod +x installer.sh
+./installer.sh
 ```
 This shorten link ``http://bit.ly/2vtw4Ge`` is pointed to ``https://raw.githubusercontent.com/frankjuniorr/Ubuntu-Install/master/code/trigger.sh``
