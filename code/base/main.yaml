@@ -28,7 +28,7 @@
         state: absent
       with_items:
         - "~/Templates"
-        - "~/Public"
+        - "~/examples.desktop"
 
     # ============================================
     # Criando o diretório de autostart

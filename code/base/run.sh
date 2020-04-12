@@ -49,10 +49,6 @@ ansible_install(){
 # Fazendo as atualizações iniciais
 # ============================================
 system_update(){
-  echo "==========================================="
-  echo "Do the initial upgrades..."
-  echo "==========================================="
-
   # Isso aqui resolve a frescura do apt-get que já começa bugado com um arquivo de lock ¬¬
   test -f /var/lib/apt/lists/lock && sudo rm -rf /var/lib/apt/lists/lock
   test -f /var/cache/apt/archives/lock && sudo rm -rf /var/cache/apt/archives/lock
