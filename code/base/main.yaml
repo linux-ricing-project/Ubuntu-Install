@@ -73,6 +73,7 @@
         - xclip
         - ffmpeg
         - baobab
+        - dconf-editor
 
     # ============================================
     # Instalando o Visual Studio Code
