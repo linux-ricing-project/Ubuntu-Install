@@ -21,6 +21,7 @@ function menu(){
   echo " [1] Telegram"
   echo " [2] Transmission"
   echo " [3] Postman"
+  echo " [4] VirtualBox 6.1"
   echo "========================================================="
   read -p "[Choose a package you want to install]: " opcao
 }
@@ -40,6 +41,10 @@ case "$opcao" in
   3)
     echo "Installing Postman..."
     ansible-playbook $(dirname $0)/postman/postman_install.yaml
+  ;;
+  4)
+    echo "Installing VirtualBox 6.1..."
+    bash $(dirname $0)/install_virtualbox.sh
   ;;
   *)
     echo "Invalid Option"
