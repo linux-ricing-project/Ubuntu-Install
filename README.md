@@ -27,7 +27,7 @@ Install the first packages and make my initial configs in a Ubuntu post-installa
   </br>
 </p>
 
-**PS: In case of Ubuntu 19.04, is necessary change the update server in "Software Updater" to "Main Server", before run script. See the image below:**
+**PS: In case of Ubuntu 19.04, is necessary change the update server in "Software Updater" to "Main Server", before run script.**
 
 The project is divided in 2 parts
 
@@ -37,19 +37,23 @@ This installation contains a principal packages installations and is triggered b
 
 > 2. Optional
 
-This installation contains others kind of packages not so importants to initial setup (ex. Telegram, LibreOffice and Transmission)
+This installation contains others kind of packages not so importants to initial setup (e.g. Telegram and Postman)
 
 ## Base Installation (steps)
 
 ### 1. Initial Upgrade
-The script make the initial config with `sudo apt upgrade && sudo apt dist-upgrade`
+The script make the initial updates.
 ### 2. Install packages
 Install many packages. Basically the packages are:
-- Player: Spotify
-- IDE: Visual Studio Code
-- Browser: Google Chrome
-- Terminal: Terminator
-- Some tools like: 
+
+| Type | Package |
+| ------ | ------ |
+| Player | Spotify |
+| IDE | VS Code |
+| Browser | Google-Chrome |
+| Terminal | Terminator |
+
+- Some others tools like: 
   - dropbox
   - docker
   - git, git-extras, meld
@@ -61,17 +65,15 @@ Install many packages. Basically the packages are:
   - imagemagick
   - and others stuffs
 
-### 3. Clean dependencies
-Clean packages with `sudo apt -f -y install` to fix broken packages and `sudo apt-get autoremove && sudo apt-get clean` to clean.
-### 4. Download my dotfiles
-Download my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles), but not install, only download. Because of my dotfiles installation is necessary the user interation.
+### 3. Download my dotfiles
+Download and install my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles).
 ### 5. Change GDM profile picture
 <p align="center">
   <img src="screenshots/gdm_profile_picture.png" alt="ubuntu_install">
   </br>
 </p>
 
-## Install without git in a Ubuntu formatted
+## Use
 This is necessary because the script have a interactive mode on ansible moment.
 ```bash
 wget -O installer.sh http://bit.ly/2vtw4Ge
