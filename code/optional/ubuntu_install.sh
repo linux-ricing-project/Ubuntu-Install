@@ -31,15 +31,15 @@ menu
 case "$opcao" in
   1)
     echo "Installing Telegram..."
-    ansible-playbook telegram/telegram_install.yaml
+    ansible-playbook $(dirname $0)/telegram/telegram_install.yaml
   ;;
   2)
     echo "Installing Transmission..."
-    ansible-playbook --ask-become-pass transmission_install.yaml
+    ansible-playbook --ask-become-pass $(dirname $0)/transmission_install.yaml
   ;;
   3)
     echo "Installing Postman..."
-    ansible-playbook postman/postman_install.yaml
+    ansible-playbook $(dirname $0)/postman/postman_install.yaml
   ;;
   *)
     echo "Invalid Option"

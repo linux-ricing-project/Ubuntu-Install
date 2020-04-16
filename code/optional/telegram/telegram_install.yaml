@@ -55,7 +55,7 @@
 
     - name: TELEGRAM - set user
       set_fact:
-        user: "{{ username }}"
+        user: "{{ username.stdout_lines }}"
 
     - name: TELEGRAM - generate desktop file
       template:
