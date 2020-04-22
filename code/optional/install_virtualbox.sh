@@ -16,7 +16,7 @@ fi
 
 log "add source list"
 os_codename=$(lsb_release -cs)
-echo "deb https://download.virtualbox.org/virtualbox/debian $os_codename contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $os_codename contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 
 log "add GPG key"
 curl -sS https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
