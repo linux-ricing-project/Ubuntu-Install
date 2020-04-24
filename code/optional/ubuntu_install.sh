@@ -47,11 +47,11 @@ case "$opcao" in
     echo "Installing VirtualBox 6.1..."
     bash $(dirname $0)/install_virtualbox.sh
   ;;
-  *)
   5)
     echo "Installing Docker..."
     bash $(dirname $0)/docker_install.sh
   ;;
+  *)
   *)
     echo "Invalid Option"
   ;;
