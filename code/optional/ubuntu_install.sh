@@ -22,6 +22,7 @@ function menu(){
   echo " [2] Transmission"
   echo " [3] Postman"
   echo " [4] VirtualBox 6.1"
+  echo " [5] Docker"
   echo "========================================================="
   read -p "[Choose a package you want to install]: " opcao
 }
@@ -45,6 +46,11 @@ case "$opcao" in
   4)
     echo "Installing VirtualBox 6.1..."
     bash $(dirname $0)/install_virtualbox.sh
+  ;;
+  *)
+  5)
+    echo "Installing Docker..."
+    bash $(dirname $0)/docker_install.sh
   ;;
   *)
     echo "Invalid Option"

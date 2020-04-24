@@ -93,13 +93,6 @@
         user: "{{ username.stdout }}"
 
     # ===========================================
-    # Instalando o Docker
-    # ===========================================
-    - include_tasks: docker_install.yaml
-      vars:
-        user: "{{ username.stdout }}"
-
-    # ===========================================
     # Instalando o Google Chrome
     # ===========================================
     - include_tasks: google_chrome_install.yaml

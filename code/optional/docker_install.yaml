@@ -1,0 +1,79 @@
+# ============================================
+# File that install and configure Docker
+# ============================================
+
+---
+- name: Ubuntu Install - Docker
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+  - name: "DOCKER - Check if Docker is installed"
+    shell: which docker > /dev/null
+    register: is_installed
+    ignore_errors: True
+
+  - name: "DOCKER - Add Docker GPG key"
+    become: true
+    become_method: sudo
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+    when: is_installed.failed
+
+  - name: "DOCKER - get SO release"
+    shell: "cat /etc/lsb-release | grep 'DISTRIB_CODENAME' | cut -d '=' -f2"
+    register: lsb_release
+    when: is_installed.failed
+
+  - name: "APT - Add Docker repository"
+    become: true
+    become_method: sudo
+    apt_repository:
+      repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ lsb_release.stdout_lines[0] }} stable"
+      state: present
+      filename: docker
+    when: is_installed.failed
+
+  - name: DOCKER Update and upgrade apt packages
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+
+  - name: DOCKER - Install dependencies
+    become: true
+    become_method: sudo
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+    when: is_installed.failed
+
+  - name: DOCKER - Install
+    become: true
+    become_method: sudo
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    when: is_installed.failed
+
+  - name: DOCKER - get username
+    shell: whoami
+    register: username
+
+  - name: DOCKER - Install
+    become: true
+    become_method: sudo
+    shell: usermod -aG docker {{ username.stdout_lines[0] }}
+    when: is_installed.failed
