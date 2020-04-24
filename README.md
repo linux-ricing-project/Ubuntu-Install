@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
+  <a href="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg">
+    <img src="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg">
+  </a>
   <a href="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
     <img src="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
-  </a>
-  <a href="https://img.shields.io/badge/ubuntu-19.04-77216F.svg">
-    <img src="https://img.shields.io/badge/ubuntu-19.04-77216F.svg">
   </a>
   <a href="https://img.shields.io/badge/language-ansible-2196F3.svg">
     <img src="https://img.shields.io/badge/language-ansible-2196F3.svg">
@@ -20,14 +20,7 @@
 </p>
 
 ## Description
-Install the first packages and make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 18.04 or 19.04 with "Minimal Installation" option selected.
-
-<p align="center">
-  <img src="screenshots/minimal_installation.png" alt="ubuntu_install">
-  </br>
-</p>
-
-**PS: In case of Ubuntu 19.04, is necessary change the update server in "Software Updater" to "Main Server", before run script.**
+Install the first packages and make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 20.04.
 
 The project is divided in 2 parts
 
@@ -53,7 +46,7 @@ Install many packages. Basically the packages are:
 | Browser | Google-Chrome |
 | Terminal | Terminator |
 
-- Some others tools like: 
+- Some others tools like:
   - dropbox
   - docker
   - git, git-extras, meld
@@ -67,14 +60,8 @@ Install many packages. Basically the packages are:
 
 ### 3. Download my dotfiles
 Download and install my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles).
-### 5. Change GDM profile picture
-<p align="center">
-  <img src="screenshots/gdm_profile_picture.png" alt="ubuntu_install">
-  </br>
-</p>
 
 ## Use
-This is necessary because the script have a interactive mode on ansible moment.
 ```bash
 wget -O installer.sh http://bit.ly/2vtw4Ge
 chmod +x installer.sh
