@@ -52,7 +52,6 @@ case "$opcao" in
     bash $(dirname $0)/docker_install.sh
   ;;
   *)
-  *)
     echo "Invalid Option"
   ;;
 esac
