@@ -97,47 +97,6 @@
     # ===========================================
     - include_tasks: google_chrome_install.yaml
 
-    # ============================================
-    # Copy the profile picture to $HOME/Pictures
-    # ============================================
-    - name: THEME - Copy user profile picture
-      copy:
-        src: files/profile.png
-        dest: /home/{{ username.stdout }}/Pictures/.face.png
-
-    # ============================================
-    # set profile picture
-    # ============================================
-
-    # verify if exist line 'Icon=' in file
-    - name: THEME - Verify the user profile picture
-      shell: grep -q "^Icon=" /var/lib/AccountsService/users/{{ username.stdout }}
-      check_mode: no
-      register: is_icon
-      failed_when: false
-      no_log: True
-      changed_when: no
-
-    # if line don't exist, add a new line
-    - name: THEME - Add user profile picture
-      become: true
-      become_method: sudo
-      lineinfile:
-        path: /var/lib/AccountsService/users/{{ username.stdout }}
-        regexp: '^Icon='
-        line: 'Icon=/home/{{ username.stdout }}/Pictures/.face.png'
-      when: is_icon.rc == 1
-
-    # if line exist, replace with new value
-    - name: THEME - Change user profile picture
-      become: true
-      become_method: sudo
-      lineinfile:
-        path: /var/lib/AccountsService/users/{{ username.stdout }}
-        regexp: '^Icon='
-        line: 'Icon=/home/{{ username.stdout }}/Pictures/.face.png'
-      when: is_icon.rc == 0
-
     # ===========================================
     # Clean Dependencies
     # ===========================================
