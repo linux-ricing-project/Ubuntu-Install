@@ -57,7 +57,7 @@
         - nano
         - gdebi-core
         - gnome-tweak-tool
-        - nautilus-compare
+        # - nautilus-compare
         - gnome-sushi
         - imagemagick
         - ubuntu-restricted-extras
@@ -110,7 +110,7 @@
     - name: THEME - Copy user profile picture
       copy:
         src: files/profile.png
-        dest: /home/{{ username.stdout }}/Pictures/profile.png
+        dest: /home/{{ username.stdout }}/Pictures/.face.png
 
     # ============================================
     # set profile picture
@@ -132,7 +132,7 @@
       lineinfile:
         path: /var/lib/AccountsService/users/{{ username.stdout }}
         regexp: '^Icon='
-        line: 'Icon=/home/{{ username.stdout }}/Pictures/profile.png'
+        line: 'Icon=/home/{{ username.stdout }}/Pictures/.face.png'
       when: is_icon.rc == 1
 
     # if line exist, replace with new value
@@ -142,7 +142,7 @@
       lineinfile:
         path: /var/lib/AccountsService/users/{{ username.stdout }}
         regexp: '^Icon='
-        line: 'Icon=/home/{{ username.stdout }}/Pictures/profile.png'
+        line: 'Icon=/home/{{ username.stdout }}/Pictures/.face.png'
       when: is_icon.rc == 0
 
     # ===========================================
