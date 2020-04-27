@@ -17,6 +17,9 @@
   <a href="https://img.shields.io/badge/language-shell-43A047.svg">
     <img src="https://img.shields.io/badge/language-shell-43A047.svg">
   </a>
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-000000.svg"/>
+  </a>
 </p>
 
 ## Description
