@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/badge/language-ansible-2196F3.svg?logo=ansible">
   </a>
   <a href="https://img.shields.io/badge/language-shell-43A047.svg">
-    <img src="https://img.shields.io/badge/language-shell-43A047.svg">
+    <img src="https://img.shields.io/badge/language-shell-43A047.svg?logo=linux">
 </p>
 
 ## Description
