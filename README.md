@@ -6,16 +6,16 @@
 
 <p align="center">
   <a href="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg">
-    <img src="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg?logo=ubuntu">
+    <img src="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg?style=flat-square&logo=ubuntu">
   </a>
   <a href="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
-    <img src="https://img.shields.io/badge/ubuntu-18.04-E95420.svg?logo=ubuntu">
+    <img src="https://img.shields.io/badge/ubuntu-18.04-E95420.svg?style=flat-square&logo=ubuntu">
   </a>
   <a href="https://img.shields.io/badge/language-ansible-2196F3.svg">
-    <img src="https://img.shields.io/badge/language-ansible-2196F3.svg?logo=ansible">
+    <img src="https://img.shields.io/badge/language-ansible-2196F3.svg?style=flat-square&logo=ansible">
   </a>
   <a href="https://img.shields.io/badge/language-shell-43A047.svg">
-    <img src="https://img.shields.io/badge/language-shell-43A047.svg?logo=linux">
+    <img src="https://img.shields.io/badge/language-shell-43A047.svg?style=flat-square&logo=linux">
 </p>
 
 ## Description
