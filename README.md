@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg?logo=ubuntu">
-    <img src="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg">
+  <a href="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg">
+    <img src="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg?logo=ubuntu">
   </a>
   <a href="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
     <img src="https://img.shields.io/badge/ubuntu-18.04-E95420.svg?logo=ubuntu">
