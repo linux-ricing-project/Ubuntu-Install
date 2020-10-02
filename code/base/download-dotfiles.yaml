@@ -28,4 +28,4 @@
   # Install Dotfiles
   # ============================================
   - name: DOTFILES - Install
-    shell: "cd /home/{{ user }}/dotfiles-master && ./install_dotfiles.sh {{ git_name }} {{ git_email }}"
+    shell: "cd /home/{{ user }}/dotfiles-master && ./install_dotfiles.sh {{ user_on_git }} {{ email_on_git }}"

@@ -1,40 +1,34 @@
 ---
-- name: VS CODE - install dependencies
+- name: "VS CODE | Install dependencies"
   become: yes
   apt:
-    name:
-      - ca-certificates
-      - apt-transport-https
-      - gconf2
-      - libasound2
-      - libgtk2.0-0
-      - libxss1
+    name: "{{ vscode_dependencies }}"
     state: present
 
-- name: VS CODE - add key
+- name: "VS CODE | add key"
   become: yes
   apt_key:
     url: 'https://packages.microsoft.com/keys/microsoft.asc'
     state: present
 
-- name: VS CODE - add repository
+- name: "VS CODE | add repository"
   become: yes
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
     state: present
 
-- name: VS CODE Update and upgrade apt packages
+- name: "VS CODE | Update and upgrade apt packages"
   become: true
   apt:
     upgrade: yes
     update_cache: yes
 
-- name: VS CODE - install
+- name: "VS CODE | install"
   become: yes
   apt:
     name: "code"
     state: present
 
-- name: VS CODE - install sync-settings extensions
+- name: "VS CODE | install sync-settings extensions"
   shell: code --install-extension Shan.code-settings-sync

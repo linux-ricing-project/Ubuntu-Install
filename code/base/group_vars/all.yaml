@@ -1,0 +1,35 @@
+---
+vscode_dependencies:
+  - ca-certificates
+  - apt-transport-https
+  - gconf2
+  - libasound2
+  - libgtk2.0-0
+  - libxss1
+
+packages:
+  - git
+  - git-extras
+  - net-tools
+  - meld
+  - jq
+  - vim
+  - nano
+  - gdebi-core
+  - gnome-tweak-tool
+  - gnome-sushi
+  - imagemagick
+  - ubuntu-restricted-extras
+  - neofetch
+  - terminator
+  - apt-transport-https
+  - zip
+  - gzip
+  - unzip
+  - bzip2
+  - tar
+  - chrome-gnome-shell
+  - xclip
+  - ffmpeg
+  - baobab
+  - dconf-editor

@@ -1,22 +1,22 @@
 ---
-- name: "GOOGLE CHROME - Check if Google Chrome is installed"
+- name: "GOOGLE CHROME | Check if Google Chrome is installed"
   shell: which google-chrome > /dev/null
   register: is_installed
   ignore_errors: True
 
-- name: "GOOGLE CHROME - Download"
+- name: "GOOGLE CHROME | Download"
   get_url:
    url: "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
    dest: "."
   when: is_installed.failed
 
-- name: "GOOGLE CHROME - Installing"
+- name: "GOOGLE CHROME | Installing"
   become: true
   become_method: sudo
   shell: gdebi --non-interactive google-chrome-stable_current_amd64.deb
   when: is_installed.failed
 
-- name: "GOOGLE CHROME - removing installer"
+- name: "GOOGLE CHROME | Removing installer"
   file:
     path: "google-chrome-stable_current_amd64.deb"
     state: absent

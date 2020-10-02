@@ -1,0 +1,50 @@
+---
+# ============================================
+# salvando o username
+# ============================================
+- name: SYSTEM | get username
+  shell: whoami
+  register: username
+
+- name: SYSTEM | get username
+  set_fact:
+    "user": "{{ username.stdout }}"
+
+# ============================================
+# Salvando o Codename do Ubuntu
+# ============================================
+- name: "SYSTEM | get SO release"
+  shell: "cat /etc/lsb-release | grep 'DISTRIB_CODENAME' | cut -d '=' -f2"
+  register: lsb_release
+
+- name: "SYSTEM | Set SO Codename"
+  set_fact:
+    "so_codename": "{{ lsb_release.stdout_lines[0] }}"
+
+# ============================================
+# Criando o diretório $HOME/bin
+# ============================================
+- name: SYSTEM | Create $HOME/bin Directory
+  file:
+    path: "$HOME/bin"
+    state: directory
+    mode: 0700
+
+# ============================================
+# Removendo os diretório do #HOME que eu não uso
+# ============================================
+- name: SYSTEM | Remove useless folders
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "~/Templates"
+    - "~/examples.desktop"
+
+# ============================================
+# Criando o diretório de autostart
+# ============================================
+- name: SYSTEM | create autostart folder
+  file:
+    path: "$HOME/.config/autostart"
+    state: directory
