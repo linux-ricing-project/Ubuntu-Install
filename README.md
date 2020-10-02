@@ -11,11 +11,17 @@
   <a href="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
     <img src="https://img.shields.io/badge/ubuntu-18.04-E95420.svg?style=flat-square&logo=ubuntu">
   </a>
+</p>
+
+<p align="center">
   <a href="https://img.shields.io/badge/language-ansible-2196F3.svg">
     <img src="https://img.shields.io/badge/language-ansible-2196F3.svg?style=flat-square&logo=ansible">
   </a>
   <a href="https://img.shields.io/badge/language-shell-43A047.svg">
     <img src="https://img.shields.io/badge/language-shell-43A047.svg?style=flat-square&logo=linux">
+    
+  <a href="https://img.shields.io/badge/language-python-0D47A1.svg">
+    <img src="https://img.shields.io/badge/language-python-0D47A1.svg?style=flat-square&logo=python">
 </p>
 
 ## Description
