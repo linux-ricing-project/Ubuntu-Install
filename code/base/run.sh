@@ -46,6 +46,13 @@ ansible_install(){
 }
 
 # ============================================
+# Instala as depêndencias do Ubuntu-Install optional
+# ============================================
+ubuntu_install_dependencies(){
+  pip3 install -r requirements.txt
+}
+
+# ============================================
 # Fazendo as atualizações iniciais
 # ============================================
 system_update(){
@@ -73,6 +80,7 @@ init(){
     echo "==========================================="
 
     ansible_install
+    ubuntu_install_dependencies
   fi
 }
 
