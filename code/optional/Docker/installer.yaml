@@ -9,7 +9,6 @@
   gather_facts: false
 
   vars:
-
     docker_packages:
       - docker-ce
       - docker-ce-cli
@@ -21,6 +20,19 @@
       - curl
       - gnupg-agent
       - software-properties-common
+
+  pre_tasks:
+
+    # ============================================
+    # Salvando o Codename do Ubuntu
+    # ============================================
+    - name: "SYSTEM | get SO release"
+      shell: "cat /etc/lsb-release | grep 'DISTRIB_CODENAME' | cut -d '=' -f2"
+      register: lsb_release
+
+    - name: "SYSTEM | Set SO Codename"
+      set_fact:
+        "so_codename": "{{ lsb_release.stdout_lines[0] }}"
 
   tasks:
   # ============================================

@@ -4,52 +4,19 @@
   connection: local
   gather_facts: false
 
-  pre-tasks:
-
-    # ============================================
-    # Salvando o Codename do Ubuntu
-    # ============================================
-    - name: "SYSTEM | get SO release"
-      shell: "cat /etc/lsb-release | grep 'DISTRIB_CODENAME' | cut -d '=' -f2"
-      register: lsb_release
-
-    - name: "SYSTEM | Set SO Codename"
-      set_fact:
-        "so_codename": "{{ lsb_release.stdout_lines[0] }}"
-
   tasks:
-    # ============================================
-    # Add chave GPG
-    # ============================================
-    - name: "VIRTUALBOX | Add apt-key"
-      apt_key:
-        url: https://ftp-master.debian.org/keys/archive-key-6.0.asc
-        state: present
 
-    # ============================================
-    # Adicionando repositórios
-    # ============================================
-    - name: "VIRTUALBOX | add repository"
-      become: yes
-      apt_repository:
-        repo: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ so_codename }} contrib"
-        filename: virtualbox
-        state: present
+    - name: "VIRTUALBOX | Download .deb file"
+      get_url:
+      url: "https://download.virtualbox.org/virtualbox/6.1.14/virtualbox-6.1_6.1.14-140239~Ubuntu~eoan_amd64.deb"
+      dest: "."
 
-    # ============================================
-    # Atualizando repositórios
-    # ============================================
-    - name: "VIRUALBOX | Update and upgrade apt packages"
-      become: true
-      apt:
-        upgrade: yes
-        update_cache: yes
-
-    # ============================================
-    # Instalando o Virtualbox
-    # ============================================
-    - name: "VIRTUALBOX | Install"
+    - name: "VIRTUALBOX | Installing"
       become: true
       become_method: sudo
-      apt:
-        name: "virtualbox-6.1"
+      shell: gdebi --non-interactive virtualbox-6.1_6.1.14-140239~Ubuntu~eoan_amd64.deb
+
+    - name: "VIRTUALBOX | Removing installer"
+      file:
+        path: "virtualbox-6.1_6.1.14-140239~Ubuntu~eoan_amd64.deb"
+        state: absent

@@ -52,9 +52,9 @@ def main():
     package = menu_items_package[selected_item]
 
     if os.path.isfile(f"{package}/installer.yaml"):
-      command = f"ansible-playbook {package}/installer.yaml"
+      command = f"ansible-playbook --ask-become-pass {package}/installer.yaml"
     elif os.path.isfile(f"{package}/installer.sh"):
-      command = f"./{package}/installer.sh"
+      command = f"sudo ./{package}/installer.sh"
 
     # execute selected package installer
     os.system(command)
