@@ -4,15 +4,16 @@
 # ============================================
 - name: "INSYNC | Add apt-key"
   apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: ACCAF35C
+    keyserver: "keyserver.ubuntu.com"
+    id: "ACCAF35C"
+    state: present
   register: "add_key_result"
   ignore_errors: True
 
 - name: "INSYNC | Add apt-key"
   apt_key:
-    keyserver: hkp://keyserver.ubuntu.com:80
-    id: ACCAF35C
+    keyserver: "hkp://keyserver.ubuntu.com:80"
+    id: "ACCAF35C"
   when: add_key_result.failed
 
 # ============================================
