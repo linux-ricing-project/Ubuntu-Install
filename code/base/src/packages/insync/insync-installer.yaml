@@ -3,6 +3,7 @@
 # Add chave GPG
 # ============================================
 - name: "INSYNC | Add apt-key"
+  become: yes
   apt_key:
     keyserver: "keyserver.ubuntu.com"
     id: "ACCAF35C"
@@ -11,6 +12,7 @@
   ignore_errors: True
 
 - name: "INSYNC | Add apt-key"
+  become: yes
   apt_key:
     keyserver: "hkp://keyserver.ubuntu.com:80"
     id: "ACCAF35C"
@@ -30,7 +32,7 @@
 # Atualizando repositórios
 # ============================================
 - name: "INSYNC | Update and upgrade apt packages"
-  become: true
+  become: yes
   apt:
     upgrade: yes
     update_cache: yes
@@ -39,7 +41,7 @@
 # Instalando o Insync
 # ============================================
 - name: "INSYNC | Install"
-  become: true
+  become: yes
   become_method: sudo
   apt:
     name: "insync"
