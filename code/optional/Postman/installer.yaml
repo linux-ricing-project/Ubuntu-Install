@@ -9,43 +9,43 @@
 
   tasks:
 
-    - name: POSTMAN - create directory
+    - name: "POSTMAN | create directory"
       file:
         path: "{{ postman_folder }}"
         state: directory
 
-    - name: "POSTMAN - Download"
+    - name: "POSTMAN | Download"
       get_url:
         url: " https://dl.pstmn.io/download/latest/linux64"
         dest: "{{ postman_folder }}"
 
-    - name: POSTMAN - Find TAr.GZ file
+    - name: "POSTMAN | Find TAr.GZ file"
       find:
         paths: "{{ postman_folder }}"
         patterns: "*.tar.gz"
       register: result_tar_gz
 
-    - name: POSTMAN - Extract file
+    - name: "POSTMAN | Extract file"
       shell: tar -xzf {{ result_tar_gz.files[0].path }} -C "{{ postman_folder }}"
       args:
         warn: false
 
-    - name: POSTMAN - remove temporary files
+    - name: "POSTMAN | remove temporary files"
       file:
         path: "{{ item }}"
         state: absent
       with_items:
         - "{{ result_tar_gz.files[0].path }}"
 
-    - name: POSTMAN - get username
+    - name: "SYSTEM | get username"
       shell: whoami
       register: username
 
-    - name: POSTMAN - set user
+    - name: "SYSTEM | set user"
       set_fact:
         user: "{{ username.stdout_lines[0] }}"
 
-    - name: POSTMAN - generate desktop file
+    - name: "POSTMAN | generate desktop file"
       template:
         src: "postman.desktop.j2"
         dest: "$HOME/.local/share/applications/postman.desktop"

@@ -23,20 +23,6 @@ def main():
                                         Developed by Frank Junior
 """
 
-  # packages config, with package name and installation type
-  menu_items = [
-    {"app": "Telegram", "installer_type": "ansible"},
-    {"app": "Transmission", "installer_type": "shell"},
-    {"app": "Postman", "installer_type": "ansible"},
-    {"app": "VirtualBox-6.1", "installer_type": "ansible"},
-    {"app": "Docker", "installer_type": "ansible"}
-  ]
-
-  # get menu list itens
-  menu_items_package = []
-  for items in menu_items:
-    menu_items_package.append(items["app"])
-
   # menu config
   main_menu_title = """=========================================================
                 PACKAGE MENU
@@ -44,6 +30,9 @@ def main():
   main_menu_cursor = ">> "
   main_menu_cursor_style = ("fg_green", "bold")
   main_menu_style = ("bg_gray", "fg_black")
+  menu_items_package = [
+    "Telegram", "Transmission", "Postman", "VirtualBox-6.1", "Docker"
+    ]
   main_menu = TerminalMenu(menu_entries=menu_items_package,
                             title=main_menu_title,
                             menu_cursor=main_menu_cursor,
@@ -60,12 +49,11 @@ def main():
 
   # selection handle
   if selected_item != None:
-    package = menu_items[selected_item]["app"]
-    installer_type = menu_items[selected_item]["installer_type"]
+    package = menu_items_package[selected_item]
 
-    if installer_type == "ansible":
+    if os.path.isfile(f"{package}/installer.yaml"):
       command = f"ansible-playbook {package}/installer.yaml"
-    elif installer_type == "shell":
+    elif os.path.isfile(f"{package}/installer.sh"):
       command = f"./{package}/installer.sh"
 
     # execute selected package installer

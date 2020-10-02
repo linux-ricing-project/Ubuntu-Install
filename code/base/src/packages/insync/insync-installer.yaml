@@ -18,7 +18,7 @@
 # ============================================
 # Adicionando repositórios
 # ============================================
-- name: INSYNC | add repository
+- name: "INSYNC | add repository"
   become: yes
   apt_repository:
     repo: deb [arch=amd64] http://apt.insync.io/ubuntu {{ so_codename }} non-free contrib
@@ -28,7 +28,7 @@
 # ============================================
 # Atualizando repositórios
 # ============================================
-- name: INSYNC | Update and upgrade apt packages
+- name: "INSYNC | Update and upgrade apt packages"
   become: true
   apt:
     upgrade: yes
@@ -37,7 +37,7 @@
 # ============================================
 # Instalando o Insync
 # ============================================
-- name: INSYNC | Install
+- name: "INSYNC | Install"
   become: true
   become_method: sudo
   apt:

@@ -8,7 +8,7 @@
     telegram_folder: $HOME/bin/Telegram
 
   tasks:
-    - name: TELEGRAM - create directory
+    - name: "TELEGRAM | create directory"
       file:
         path: "{{ telegram_folder }}"
         state: directory
@@ -21,27 +21,27 @@
         - https://telegram.org/dl/desktop/linux
         - https://telegram.org/img/t_logo.png
 
-    - name: TELEGRAM - Find XZ file
+    - name: "TELEGRAM | Find XZ file"
       find:
         paths: "{{ telegram_folder }}"
         patterns: "*.xz"
       register: result_xz
 
-    - name: TELEGRAM - Extract file
+    - name: "TELEGRAM | Extract file"
       shell: tar -xvf {{ result_xz.files[0].path }} -C "{{ telegram_folder }}"
       args:
         warn: false
 
-    - name: TELEGRAM - Find PNG file
+    - name: "TELEGRAM | Find PNG file"
       find:
         paths: "{{ telegram_folder }}"
         patterns: "*.png"
       register: result_png
 
-    - name: TELEGRAM - Convert logo image size
+    - name: "TELEGRAM | Convert logo image size"
       shell: convert -resize 128x128 {{ result_png.files[0].path }} {{ telegram_folder }}/telegram_logo.png
 
-    - name: TELEGRAM - remove temporary files
+    - name: "TELEGRAM | remove temporary files"
       file:
         path: "{{ item }}"
         state: absent
@@ -49,15 +49,15 @@
         - "{{ result_xz.files[0].path }}"
         - "{{ result_png.files[0].path }}"
 
-    - name: TELEGRAM - get username
+    - name: "SYSTEM | get username"
       shell: whoami
       register: username
 
-    - name: TELEGRAM - set user
+    - name: "SYSTEM | set user"
       set_fact:
         user: "{{ username.stdout_lines }}"
 
-    - name: TELEGRAM - generate desktop file
+    - name: "TELEGRAM | generate desktop file"
       template:
         src: "telegram.desktop.j2"
         dest: "$HOME/.local/share/applications/telegram.desktop"

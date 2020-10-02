@@ -8,13 +8,33 @@
   connection: local
   gather_facts: false
 
+  vars:
+
+    docker_packages:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+    docker_dependencies:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+
   tasks:
+  # ============================================
+  # Check se o docker já está instalado
+  # ============================================
   - name: "DOCKER - Check if Docker is installed"
     shell: which docker > /dev/null
     register: is_installed
     ignore_errors: True
 
-  - name: "DOCKER - Add Docker GPG key"
+  # ============================================
+  # Adicionando a GPG key
+  # ============================================
+  - name: "DOCKER | Add Docker GPG key"
     become: true
     become_method: sudo
     apt_key:
@@ -22,7 +42,10 @@
       state: present
     when: is_installed.failed
 
-  - name: "APT - Add Docker repository"
+  # ============================================
+  # Adicionando repositórios
+  # ============================================
+  - name: "DOCKER | Add Docker repository"
     become: true
     become_method: sudo
     apt_repository:
@@ -31,43 +54,43 @@
       filename: docker
     when: is_installed.failed
 
-  - name: DOCKER Update and upgrade apt packages
+  # ============================================
+  # Atualizando repositórios
+  # ============================================
+  - name: "DOCKER | Update and upgrade apt packages"
     become: true
     apt:
       upgrade: yes
       update_cache: yes
 
-  - name: DOCKER - Install dependencies
+  # ============================================
+  # Instalando as depedeêcias
+  # ============================================
+  - name: "DOCKER | Install dependencies"
     become: true
     become_method: sudo
     apt:
-      name: "{{ packages }}"
-    vars:
-      packages:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - gnupg-agent
-      - software-properties-common
+      name: "{{ docker_dependencies }}"
     when: is_installed.failed
 
-  - name: DOCKER - Install
+  # ============================================
+  # Instalando o Docker
+  # ============================================
+  - name: "DOCKER | Install"
     become: true
     become_method: sudo
     apt:
-      name: "{{ packages }}"
-    vars:
-      packages:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
+      name: "{{ docker_packages }}"
     when: is_installed.failed
 
-  - name: DOCKER - get username
+  # ============================================
+  # Configurando permissão do usuário
+  # ============================================
+  - name: "SYSTEM | get username"
     shell: whoami
     register: username
 
-  - name: DOCKER - Install
+  - name: "DOCKER | Install"
     become: true
     become_method: sudo
     shell: usermod -aG docker {{ username.stdout_lines[0] }}

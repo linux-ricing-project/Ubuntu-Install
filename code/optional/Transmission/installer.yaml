@@ -8,7 +8,7 @@
     # ============================================
     # adicionando repositórios do Transmission
     # ============================================
-    - name: TRANSMISSION - Add repositories
+    - name: "TRANSMISSION | Add repositories"
       become: true
       become_method: sudo
       apt_repository:
@@ -18,7 +18,7 @@
     # ============================================
     # Instalando o Transmission
     # ============================================
-    - name: TRANSMISSION - installing
+    - name: "TRANSMISSION | Installing"
       become: yes
       apt:
         name: "transmission"

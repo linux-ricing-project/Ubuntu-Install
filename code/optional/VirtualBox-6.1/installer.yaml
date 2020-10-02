@@ -1,0 +1,55 @@
+---
+- name: Ubuntu Install - VirtualBox
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  pre-tasks:
+
+    # ============================================
+    # Salvando o Codename do Ubuntu
+    # ============================================
+    - name: "SYSTEM | get SO release"
+      shell: "cat /etc/lsb-release | grep 'DISTRIB_CODENAME' | cut -d '=' -f2"
+      register: lsb_release
+
+    - name: "SYSTEM | Set SO Codename"
+      set_fact:
+        "so_codename": "{{ lsb_release.stdout_lines[0] }}"
+
+  tasks:
+    # ============================================
+    # Add chave GPG
+    # ============================================
+    - name: "VIRTUALBOX | Add apt-key"
+      apt_key:
+        url: https://ftp-master.debian.org/keys/archive-key-6.0.asc
+        state: present
+
+    # ============================================
+    # Adicionando repositórios
+    # ============================================
+    - name: "VIRTUALBOX | add repository"
+      become: yes
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ so_codename }} contrib"
+        filename: virtualbox
+        state: present
+
+    # ============================================
+    # Atualizando repositórios
+    # ============================================
+    - name: "VIRUALBOX | Update and upgrade apt packages"
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    # ============================================
+    # Instalando o Virtualbox
+    # ============================================
+    - name: "VIRTUALBOX | Install"
+      become: true
+      become_method: sudo
+      apt:
+        name: "virtualbox-6.1"
