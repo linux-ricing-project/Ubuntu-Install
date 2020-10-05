@@ -91,7 +91,7 @@ read -p "Enter Git username: " git_username
 read -p "Enter Git email: " git_email
 
 echo "==========================================="
-echo "Installings the main packages"
+echo "Installing the main packages"
 echo "==========================================="
 ansible-playbook --ask-become-pass --extra-vars "user_on_git=${git_username} email_on_git=${git_email}" main.yaml
 
