@@ -22,17 +22,19 @@ def main():
 \____/_.___/\__,_/_/ /_/\__/\__,_/  /___/_/ /_/____/\__/\__,_/_/_/
                                         Developed by Frank Junior
 """
-
-  # menu config
-  main_menu_title = """=========================================================
-                PACKAGE MENU
-========================================================="""
-  main_menu_cursor = ">> "
-  main_menu_cursor_style = ("fg_green", "bold")
-  main_menu_style = ("bg_gray", "fg_black")
+  # package list
   menu_items_package = [
     "Telegram", "Transmission", "Postman", "VirtualBox-6.1", "Docker"
     ]
+
+  # menu config
+  separator = "========================================================="
+  title = "PACKAGE MENU".center(len(separator))
+  main_menu_title = separator + "\n" + title + "\n" + separator
+
+  main_menu_cursor = ">> "
+  main_menu_cursor_style = ("fg_green", "bold")
+  main_menu_style = ("bg_gray", "fg_black")
   main_menu = TerminalMenu(menu_entries=menu_items_package,
                             title=main_menu_title,
                             menu_cursor=main_menu_cursor,
@@ -51,13 +53,15 @@ def main():
   if selected_item != None:
     package = menu_items_package[selected_item]
 
+    command = None
     if os.path.isfile(f"{package}/installer.yaml"):
       command = f"ansible-playbook --ask-become-pass {package}/installer.yaml"
     elif os.path.isfile(f"{package}/installer.sh"):
       command = f"sudo ./{package}/installer.sh"
 
     # execute selected package installer
-    os.system(command)
+    if command != None:
+      os.system(command)
 
 if __name__ == "__main__":
     main()
