@@ -1,4 +1,16 @@
 #!/bin/bash
+################################################################################
+# Descrição:
+#    Script principal para fazer todas as instalações que eu uso.
+#    O script é voltado para Ubuntu 20.04 com Gnome
+#
+################################################################################
+# Uso:
+#    ./run.sh
+#
+################################################################################
+# Autor: Frank Junior <frankcbjunior@gmail.com>
+################################################################################
 
 ################################################################################
 # Configurações
@@ -22,33 +34,72 @@ HEADER
 }
 
 # ============================================
-# Instalação do Ansible via Pip.
-# A versão que ta no apt-get ta desatualizada pra variar ¬¬
+# Pré configurações
 # ============================================
-ansible_install(){
-  sudo apt -y install software-properties-common \
-      curl \
-      wget \
-      python3-distutils \
-      python3-testresources
+pre_config(){
+  echo "############################################"
+  echo " Pré-Config"
+  echo "############################################"
 
-  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  python3 get-pip.py --user
+  echo "[DEBUG]: Create a my own bin folder"
+  [[ ! -d "${HOME}/bin" ]] && mkdir "${HOME}/bin"
 
-  source ~/.profile
-  rm -rf get-pip.py
+  echo "[DEBUG]: Remove useless folders"
+  [[ -d "${HOME}/Templates" ]] && rm -rf "${HOME}/Templates"
+  [[ -f "${HOME}/examples.desktop" ]] && rm -rf "${HOME}/examples.desktop"
 
-  # essa linha só serve pra debug mesmo, pra garantir que a instalação do pip foi ok.
-  pip3 --version
+  echo "[DEBUG]: Create autostart folder"
+  [[ ! -d "${HOME}/.config/autostart" ]] && mkdir -p "${HOME}/.config/autostart"
+}
 
-  pip3 install --user ansible
-  ansible --version
+# ============================================
+# Instalação do python3 e pip3
+# ============================================
+python3_pip3_install(){
+
+  if ! type pip3 > /dev/null 2>&1; then
+    echo
+    echo "############################################"
+    echo " Python3 and Pip3"
+    echo "############################################"
+
+    sudo apt -y install \
+        python3-distutils \
+        python3-testresources
+
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python3 get-pip.py --user
+
+    source ~/.profile
+    rm -rf get-pip.py
+
+    # essa linha só serve pra debug mesmo, pra garantir que a instalação do pip foi ok.
+    pip3 --version
+  fi
+
+}
+
+# ============================================
+# Instala os principais pacotes iniciais
+# ============================================
+initial_installations(){
+  echo
+  echo "############################################"
+  echo " Initial Installations"
+  echo "############################################"
+
+  sudo apt -y install software-properties-common curl wget
 }
 
 # ============================================
 # Instala as depêndencias do Ubuntu-Install optional
 # ============================================
-ubuntu_install_dependencies(){
+ubuntu_optional_dependencies(){
+  echo
+  echo "############################################"
+  echo " Install Ubuntu-Optional dependencies"
+  echo "############################################"
+
   pip3 install -r requirements.txt
 }
 
@@ -56,6 +107,10 @@ ubuntu_install_dependencies(){
 # Fazendo as atualizações iniciais
 # ============================================
 system_update(){
+  echo
+  echo "############################################"
+  echo " System Update"
+  echo "############################################"
   # Isso aqui resolve a frescura do apt-get que já começa bugado com um arquivo de lock ¬¬
   test -f /var/lib/apt/lists/lock && sudo rm -rf /var/lib/apt/lists/lock
   test -f /var/cache/apt/archives/lock && sudo rm -rf /var/cache/apt/archives/lock
@@ -67,33 +122,64 @@ system_update(){
   sudo apt -y full-upgrade
 }
 
-init(){
-  # updagrade inicial, por volta de uns 300 MB
-  system_update
+# ============================================
+# limpando o ambiente dos pacotes do apt
+# ============================================
+clean_environment(){
+  echo
+  echo "############################################"
+  echo " Clean Environment"
+  echo "############################################"
 
-  # ============================================
-  # Instalando o Ansible
-  # ============================================
-  if ! type ansible > /dev/null 2>&1; then
-    echo "==========================================="
-    echo "Installing Ansible..."
-    echo "==========================================="
-
-    ansible_install
-    ubuntu_install_dependencies
-  fi
+  sudo apt -y update && sudo apt -y upgrade
+  sudo apt autoremove -y;
+  sudo apt autoclean -y;
+  sudo apt clean -y
 }
 
+# ============================================
+# Download meus repositório de dotfiles
+# ============================================
+download_dotfiles(){
+  echo
+  echo "############################################"
+  echo " Install my dotfiles"
+  echo "############################################"
+
+  cd $HOME
+  wget "https://github.com/linux-ricing-project/dotfiles/archive/master.zip" -O "dotfiles.zip"
+  unzip "dotfiles.zip"
+  rm -rf "dotfiles.zip"
+
+  read -p "Enter Git username: " git_username
+  read -p "Enter Git email: " git_email
+
+  cd dotfiles-master
+  ./install_dotfiles.sh "$git_username" "$git_email"
+  cd $HOME
+}
+
+# ============================================
+# function that trigger the init installations
+# ============================================
+init(){
+  pre_config
+  # updagrade inicial, por volta de uns 300 MB
+  system_update
+  initial_installations
+  python3_pip3_install
+  ubuntu_optional_dependencies
+}
+
+# ######################### MAIN #########################
 show_header
 init
 
-read -p "Enter Git username: " git_username
-read -p "Enter Git email: " git_email
+bash src/install-packages.sh
+bash src/install-main-packages.sh
 
-echo "==========================================="
-echo "Installing the main packages"
-echo "==========================================="
-ansible-playbook --ask-become-pass --extra-vars "user_on_git=${git_username} email_on_git=${git_email}" main.yaml
+clean_environment
+download_dotfiles
 
 clear
 echo "==========================================="

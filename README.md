@@ -14,9 +14,6 @@
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/language-ansible-2196F3.svg">
-    <img src="https://img.shields.io/badge/language-ansible-2196F3.svg?style=flat-square&logo=ansible">
-  </a>
   <a href="https://img.shields.io/badge/language-shell-43A047.svg">
     <img src="https://img.shields.io/badge/language-shell-43A047.svg?style=flat-square&logo=linux">
     
@@ -53,6 +50,7 @@ Install many packages. Basically the packages are:
 
 - Some others tools like:
   - dropbox
+  - insync
   - docker
   - git, git-extras, meld
   - vim , nano

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/home/{{ user }}/.dropbox-dist/dropboxd
+Exec=
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
