@@ -6,19 +6,17 @@
 
 <p align="center">
   <a href="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg">
-    <img src="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg?style=flat-square&logo=ubuntu">
+    <img src="https://img.shields.io/badge/-ubuntu_20.04-4A0048.svg?style=for-the-badge&logo=ubuntu&logoColor=white">
   </a>
   <a href="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
-    <img src="https://img.shields.io/badge/ubuntu-18.04-E95420.svg?style=flat-square&logo=ubuntu">
+    <img src="https://img.shields.io/badge/-ubuntu_18.04-E95420.svg?style=for-the-badge&logo=ubuntu&logoColor=white">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/language-shell-43A047.svg">
-    <img src="https://img.shields.io/badge/language-shell-43A047.svg?style=flat-square&logo=linux">
-    
-  <a href="https://img.shields.io/badge/language-python-0D47A1.svg">
-    <img src="https://img.shields.io/badge/language-python-0D47A1.svg?style=flat-square&logo=python">
+  <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://img.shields.io/badge/-CC_BY--SA_4.0-000000.svg?style=for-the-badge&logo=creative-commons&logoColor=white"/>
+  </a>
 </p>
 
 ## Description
@@ -76,11 +74,8 @@ This shorten link ``http://bit.ly/2vtw4Ge`` is pointed to ``https://raw.githubus
 
   ### License:
 
-<p align="left">
+<p align="center">
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> </a>
-  <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-000000.svg?style=flat-square&logo=creativecommons"/>
+    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
   </a>
-  
 </p>
