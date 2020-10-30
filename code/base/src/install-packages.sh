@@ -99,15 +99,6 @@ if [ $(grep "DISTRIB_RELEASE" /etc/lsb-release | cut -d "=" -f2) == "20.04" ];th
   sudo apt update
   sudo apt install -y albert
 
-  # essas linhas ficariam no repo de dotfiles
-  # albert_themes_folder="/usr/share/albert/org.albert.frontend.widgetboxmodel/themes"
-  # [[ ! -d "$albert_themes_folder" ]] && mkdir -p "$albert_themes_folder"
-  # sudo cp "Nord.qss" "$albert_themes_folder"
-  # sudo chmod 644 "${albert_themes_folder}/Nord.qss"
-
-  # [[ ! -d "${HOME}/.config/albert" ]] && mkdir -p "${HOME}/.config/albert"
-  # [[ -f "${HOME}/.config/albert/albert.conf" ]] && rm -rf "${HOME}/.config/albert/albert.conf"
-  # cp "albert.conf" "${HOME}/.config/albert/albert.conf"
 fi
 }
 

@@ -78,12 +78,6 @@ install_shell(){
     # instalando o powerlevel10k
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/themes/powerlevel10k
 
-    # TODO: linkar aqui o 'frank.zsh-theme' para '~/.oh-my-zsh/themes'
-    # [[ -f "${HOME}/.zshrc" ]] && rm -rf "${HOME}/.zshrc"
-    # cp '.zshrc' "$HOME"
-    # cp 'frank.zsh-theme' "${HOME}/.oh-my-zsh/themes"
-    # cp '.p10k.zsh' "$HOME"
-
     # transformando o zsh no shell padrão
     chsh -s $(which zsh)
   fi
