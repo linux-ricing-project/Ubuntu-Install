@@ -11,9 +11,7 @@
   <a href="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
     <img src="https://img.shields.io/badge/-ubuntu_18.04-E95420.svg?style=for-the-badge&logo=ubuntu&logoColor=white">
   </a>
-</p>
-
-<p align="center">
+  <br>
   <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img src="https://img.shields.io/badge/-CC_BY--SA_4.0-000000.svg?style=for-the-badge&logo=creative-commons&logoColor=white"/>
   </a>
