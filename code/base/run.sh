@@ -150,11 +150,11 @@ download_dotfiles(){
   wget "https://github.com/linux-ricing-project/dotfiles/archive/master.zip" -O "dotfiles.zip"
   unzip "dotfiles.zip"
   rm -rf "dotfiles.zip"
+  cd dotfiles
 
   read -p "Enter Git username: " git_username
   read -p "Enter Git email: " git_email
 
-  cd dotfiles-master
   ./install_dotfiles.sh "$git_username" "$git_email"
   cd $HOME
 }
@@ -164,7 +164,7 @@ download_dotfiles(){
 # ============================================
 init(){
   pre_config
-  # updagrade inicial, por volta de uns 300 MB
+  # upgrade inicial, por volta de uns 300 MB
   system_update
   initial_installations
   python3_pip3_install
@@ -177,9 +177,10 @@ init
 
 bash src/install-packages.sh
 bash src/install-main-packages.sh
+bash src/install-custom-shell.sh
 
 clean_environment
-download_dotfiles
+# download_dotfiles
 
 clear
 echo "==========================================="

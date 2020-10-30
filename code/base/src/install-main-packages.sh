@@ -23,13 +23,21 @@ install_vscode(){
       gconf2 \
       libasound2 \
       libgtk2.0-0 \
-      libxss1 \
+      libxss1
 
     # install vscode
     wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
     sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+    sudo apt update
     sudo apt install -y code
     code --install-extension Shan.code-settings-sync
+
+    # se achar o endereço do repositório no '/etc/apt/source.list', delete.
+    # porque a instalação adicionou lá, mas acabou ficando repetido, pq o endereço
+    # já é adicionado no '/etc/apt/source.list.d' pelo comando 'add-apt-repository'
+    if grep -q "packages.microsoft.com/repos/vscode" /etc/apt/sources.list ;then
+      sudo sed -i '/packages.microsoft.com\/repos\/vscode/d' /etc/apt/sources.list
+    fi
   fi
 }
 
