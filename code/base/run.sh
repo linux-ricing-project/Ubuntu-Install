@@ -180,7 +180,7 @@ bash src/install-main-packages.sh
 bash src/install-custom-shell.sh
 
 clean_environment
-# download_dotfiles
+download_dotfiles
 
 clear
 echo "==========================================="
