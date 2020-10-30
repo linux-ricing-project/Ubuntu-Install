@@ -20,7 +20,7 @@
 </p>
 
 ## Description
-Install the first packages and make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 20.04.
+My own config/packages Ubuntu installer that make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 20.04.
 
 The project is divided in 2 parts
 
