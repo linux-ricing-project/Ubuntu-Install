@@ -35,22 +35,18 @@ install_fonts(){
     local font_location="${HOME}/.local/share/fonts"
     [[ ! -d "$font_location" ]] && mkdir "$font_location"
 
-    local hack_font_link="https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf"
-    local fira_code_link="https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf"
+    local fonts_array=(
+        "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf"
+        "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S/Regular/complete/Meslo%20LG%20S%20Regular%20Nerd%20Font%20Complete.ttf"
+    )
 
-    cd "$font_location"
+    for font in ${fonts_array[*]};do
+        local font_name=$(echo $font | cut -d '/' -f9)
 
-    # fira code
-    if ! fc-list | grep -q "Fira"; then
-        wget "$fira_code_link" --directory-prefix "${font_location}"
-    fi
-
-    # hack font
-    if ! fc-list | grep -q "Hack"; then
-        wget "$hack_font_link" --directory-prefix "${font_location}"
-    fi
-
-    cd -
+        if ! fc-list | grep -q $font_name; then
+            wget "$font_name" --directory-prefix "${font_location}"
+        fi
+    done
 
     # refresh fonts
     fc-cache -f -v

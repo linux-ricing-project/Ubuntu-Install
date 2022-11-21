@@ -6,6 +6,7 @@
 # -e: se encontrar algum erro, termina a execução imediatamente
 set -e
 
+##########################################################
 install_extract_tools(){
   echo
   echo "############################################"
@@ -20,6 +21,7 @@ install_extract_tools(){
     tar
 }
 
+##########################################################
 install_ubuntu_packages(){
   echo
   echo "############################################"
@@ -35,10 +37,11 @@ install_ubuntu_packages(){
     dconf-editor
 }
 
+##########################################################
 install_dependencies(){
   echo
   echo "############################################"
-  echo " Install some imortant tools"
+  echo " Install some important tools"
   echo "############################################"
 
   sudo apt install -y \
@@ -47,6 +50,7 @@ install_dependencies(){
     ffmpeg
 }
 
+##########################################################
 install_tools(){
   echo
   echo "############################################"
@@ -66,46 +70,12 @@ install_tools(){
     xclip
 }
 
-# ============================================
-# Instalação do Ansible via Pip.
-# A versão que ta no apt-get ta desatualizada pra variar ¬¬
-# ============================================
-install_ansible(){
-  if ! type ansible > /dev/null 2>&1; then
-    echo
-    echo "############################################"
-    echo " Install Ansible"
-    echo "############################################"
-
-    pip3 install --user ansible
-    ansible --version
-  fi
-}
-
-# ============================================
-# instalação do "Albert", um lançador de apps
-# link: https://github.com/albertlauncher/albert
-# ============================================
-install_albert(){
-# instalação apenas pro Ubuntu 20.04
-if [ $(grep "DISTRIB_RELEASE" /etc/lsb-release | cut -d "=" -f2) == "20.04" ];then
-  echo
-  echo "############################################"
-  echo " Install Albert"
-  echo "############################################"
-
-  echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/manuelschneid3r.list
-  curl -fsSL 'https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_20.04/Release.key' | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/manuelschneid3r.gpg > /dev/null
-  sudo apt update
-  sudo apt install -y albert
-
-fi
-}
-
 # ######################### MAIN #########################
 install_dependencies
 install_extract_tools
-install_ubuntu_packages
+
+if [ $DESKTOP_SESSION = "gnome" ];then
+  install_ubuntu_packages
+fi
+
 install_tools
-install_ansible
-install_albert
