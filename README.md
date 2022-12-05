@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/ubuntu-20.04-4A0048.svg">
-    <img src="https://img.shields.io/badge/-ubuntu_20.04-4A0048.svg?style=for-the-badge&logo=ubuntu&logoColor=white">
+  <a href="https://img.shields.io/badge/ubuntu-22.04-4A0048.svg">
+    <img src="https://img.shields.io/badge/-ubuntu_22.04-4A0048.svg?style=for-the-badge&logo=ubuntu&logoColor=white">
   </a>
-  <a href="https://img.shields.io/badge/ubuntu-18.04-E95420.svg">
-    <img src="https://img.shields.io/badge/-ubuntu_18.04-E95420.svg?style=for-the-badge&logo=ubuntu&logoColor=white">
+  <a href="https://img.shields.io/badge/ubuntu-22.04-1d99f3.svg">
+    <img src="https://img.shields.io/badge/-kubuntu_22.04-1d99f3.svg?style=for-the-badge&logo=kubuntu&logoColor=white">
   </a>
   <br>
   <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -18,17 +18,7 @@
 </p>
 
 ## Description
-My own config/packages Ubuntu installer that make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 20.04.
-
-The project is divided in 2 parts
-
-> 1. Base
-
-This installation contains a principal packages installations and is triggered by [``trigger.sh``](https://raw.githubusercontent.com/frankjuniorr/ubuntu_install/master/code/trigger.sh)
-
-> 2. Optional
-
-This installation contains others kind of packages not so importants to initial setup (e.g. Telegram and Postman)
+My own config/packages Ubuntu installer that make my initial configs in a Ubuntu post-installation. Its recommended Ubuntu 22.04 or Kubuntu 22.04.
 
 ## Base Installation (steps)
 
@@ -37,25 +27,43 @@ The script make the initial updates.
 ### 2. Install packages
 Install many packages. Basically the packages are:
 
+### Some tools:
+
+| Type | Package |
+| ------ | ------ |
+| Version Control | git |
+| Diff tool | meld |
+| CLI text editor | vim |
+
+### Some packages:
+
 | Type | Package |
 | ------ | ------ |
 | Player | Spotify |
 | IDE | VS Code |
 | Browser | Google-Chrome |
 | Terminal | Terminator |
+| Chat | Telegram |
+| Password Manager | 1Password |
 
-- Some others tools like:
-  - dropbox
-  - insync
-  - docker
-  - git, git-extras, meld
-  - vim , nano
-  - curl, wget
-  - zip, bzip2, unzip... and other extract packages
-  - gnome_tweak-tool
-  - neofetch
-  - imagemagick
-  - and others stuffs
+### Custom Shell:
+
+- zsh
+- oh-my-zsh
+- powerlevel10k
+- colorls
+- neofetch
+- nerd-fonts
+
+### Some Devops Tools:
+
+| Type | Package |
+| ------ | ------ |
+| Programming Language | python3 |
+| Configuration tool | Ansible |
+| Container | Docker |
+| Infra as a Code | Terraform |
+
 
 ### 3. Download my dotfiles
 Download and install my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles).

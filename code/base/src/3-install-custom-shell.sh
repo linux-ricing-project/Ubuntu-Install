@@ -44,7 +44,7 @@ install_fonts(){
         local font_name=$(echo $font | cut -d '/' -f9)
 
         if ! fc-list | grep -q $font_name; then
-            wget "$font_name" --directory-prefix "${font_location}"
+            wget "$font" --directory-prefix "${font_location}"
         fi
     done
 
