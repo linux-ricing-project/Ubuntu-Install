@@ -25,4 +25,4 @@ clear
 
 ./run.sh
 
-rm -rf "${root_location}/Ubuntu-Install-${branch}"
+# rm -rf "${root_location}/Ubuntu-Install-${branch}"

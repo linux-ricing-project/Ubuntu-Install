@@ -1,0 +1,7 @@
+[Desktop Entry]
+  Version=1.0
+  Name=dropbox
+  Exec=/opt/dropbox/dropboxd
+  Icon=/
+  Type=Application
+  Categories=Application
