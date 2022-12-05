@@ -37,25 +37,35 @@ The script make the initial updates.
 ### 2. Install packages
 Install many packages. Basically the packages are:
 
+### Some tools:
+
+| Type | Package |
+| ------ | ------ |
+| Version Control | git |
+| Diff tool | meld |
+| CLI text editor | vim |
+| Fecth | neofecth |
+
+### Some packages:
+
 | Type | Package |
 | ------ | ------ |
 | Player | Spotify |
 | IDE | VS Code |
 | Browser | Google-Chrome |
 | Terminal | Terminator |
+| Chat | Telegram |
+| Password Manager | 1Password |
 
-- Some others tools like:
-  - dropbox
-  - insync
-  - docker
-  - git, git-extras, meld
-  - vim , nano
-  - curl, wget
-  - zip, bzip2, unzip... and other extract packages
-  - gnome_tweak-tool
-  - neofetch
-  - imagemagick
-  - and others stuffs
+### Some Devops Tools:
+
+| Type | Package |
+| ------ | ------ |
+| Programming Language | python3 |
+| Configuration tool | Ansible |
+| Container | Docker |
+| Infra as a Code | Terraform |
+
 
 ### 3. Download my dotfiles
 Download and install my [Dotfiles repository](https://github.com/frankjuniorr/dotfiles).
