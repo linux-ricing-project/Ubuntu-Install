@@ -7,33 +7,6 @@
 set -e
 
 ##########################################################
-python3_pip3_install(){
-
-  if ! type pip3 > /dev/null 2>&1; then
-    echo
-    echo "############################################"
-    echo " Python3 and Pip3"
-    echo "############################################"
-
-    sudo apt -y install \
-        python3-distutils \
-        python3-testresources \
-        python3.10-venv \
-        python3-pip
-
-    # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    # python3 get-pip.py --user
-
-    # source ~/.profile
-    # rm -rf get-pip.py
-
-    # essa linha só serve pra debug mesmo, pra garantir que a instalação do pip foi ok.
-    pip3 --version
-  fi
-
-}
-
-##########################################################
 install_ansible(){
   if ! type ansible > /dev/null 2>&1; then
     echo
@@ -97,7 +70,6 @@ install_terraform(){
 }
 
 # ######################### MAIN #########################
-python3_pip3_install
 install_ansible
 install_docker
 install_terraform
